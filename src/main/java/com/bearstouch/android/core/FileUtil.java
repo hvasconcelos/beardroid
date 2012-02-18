@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+import android.content.Context;
+import android.os.Environment;
+
 public class FileUtil {
 	
 	public static String readFileContentToString(InputStream fis)
@@ -34,5 +37,15 @@ public class FileUtil {
 
 	}
 	
+	
+	public static String getSDCardCachePath(Context context){
+		 String cacheDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/"
+       + context.getPackageName() + "/cache";
+		return cacheDir;
+	}
+	
+	public static String getInternalCachePath(Context context){
+		return context.getCacheDir().getAbsolutePath();
+	}
 	
 }

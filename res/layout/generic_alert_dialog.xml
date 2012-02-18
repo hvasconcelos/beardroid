@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/layout_ct_dialog"
+  android:orientation="horizontal"
+              android:layout_width="fill_parent"
+              android:padding="10dp" android:layout_height="wrap_content" >
+    <ImageView android:src="@drawable/ic_dialog_alert" android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7dp"></ImageView>
+    
+    <TextView
+        android:id="@+id/alertMessage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="12dp" />
+
+</LinearLayout>

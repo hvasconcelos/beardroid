@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/action_bar_relative"
+    android:layout_width="fill_parent"
+    android:layout_height="40dp" android:background="@drawable/action_bar">
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:id="@+id/home_drawable_layout"
+            android:layout_width="40dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:background="@drawable/action_bar_item_back" android:paddingLeft="8dp" android:paddingTop="6dip">
+
+            <ImageView
+                android:id="@+id/logoDrawable"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_home_logo" android:clickable="false"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/titleDividerLayout"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:src="@drawable/action_bar_divider" />
+
+        <LinearLayout
+            android:id="@+id/action_bar_title_layou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp" >
+
+            <TextView
+                android:id="@+id/action_bar_title_text"
+                style="@style/action_bar_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium Text"
+                android:textColor="#EEEEEE"
+                 android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="16dip" android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"        
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+
+    </LinearLayout>
+
+</RelativeLayout>

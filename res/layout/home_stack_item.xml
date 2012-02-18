@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="140dip"
+    android:layout_height="140dip"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="vertical" android:background="@drawable/ic_list_selector">
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/item_drawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             />
+
+        <TextView
+            android:id="@+id/item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vocabulario"
+            android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="#DDDDDD" android:textSize="16dip"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="BearActionBar">
+        <attr name="action_bar_logo_drawable" format="reference" />
+        <attr name="action_bar_title" format="string" />
+        <!--  <attr name="action_bar_divider_width" format="dimension" />-->
+    </declare-styleable>	   
+    <style name="action_bar_background">
+        <item name="android:background">@color/bar_background</item>
+    </style>
+    <style name="action_bar_title_style">
+        <item name="android:textColor">#eee</item>
+        <item name="android:textSize">11dp</item> 
+        <item name="android:textStyle">bold</item>
+    </style>   
+</resources>

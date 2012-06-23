@@ -1,5 +1,4 @@
 package com.bearstouch.android.core.db;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,6 +17,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * 
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
+
 public class AssetDBHelper extends SQLiteOpenHelper {
 
 	public static String	LOGTAG_		= "BearDBHelper";
@@ -30,6 +35,13 @@ public class AssetDBHelper extends SQLiteOpenHelper {
 	String					mPackageName;
 	String					mDBPath;
 
+	/**
+	 * @param package_name
+	 * @param database_name
+	 * @param database_version
+	 * @param context
+	 * @param log
+	 */
 	@Inject
 	public AssetDBHelper(@Named("PackageName") String package_name,
 			@Named("DatabaseName") String database_name,
@@ -57,6 +69,9 @@ public class AssetDBHelper extends SQLiteOpenHelper {
 		openDataBase();
 	}
 
+	/**
+	 * @throws IOException
+	 */
 	public void createDataBase() throws IOException {
 		boolean mDataBaseExist = checkDataBase();
 		if (!mDataBaseExist) {
@@ -70,12 +85,19 @@ public class AssetDBHelper extends SQLiteOpenHelper {
 		}
 	}
 
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean openDataBase() throws SQLException {
 		String mPath = mDBPath + mDatabaseName;
 		mDatabase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
 		return mDatabase != null;
 	}
 
+	/**
+	 * @return
+	 */
 	private boolean checkDataBase() {
 		SQLiteDatabase mCheckDataBase = null;
 		try {
@@ -93,6 +115,9 @@ public class AssetDBHelper extends SQLiteOpenHelper {
 		return mCheckDataBase != null;
 	}
 
+	/**
+	 * @throws IOException
+	 */
 	private void copyDataBase() throws IOException {
 
 		mLog.info(LOGTAG_, " Copying Database [" + mDatabaseName + "] to [" + mDBPath + mDBPath + "]");
@@ -109,6 +134,10 @@ public class AssetDBHelper extends SQLiteOpenHelper {
 		mInput.close();
 	}
 
+	/**
+	 * @param numchunks
+	 * @throws IOException
+	 */
 	private void copyDataBaseInChunks(int numchunks) throws IOException {
 		 AssetManager am = mContext.getAssets();
 		 File Path = mContext.getDir("Data", 0);
@@ -129,16 +158,33 @@ public class AssetDBHelper extends SQLiteOpenHelper {
 	    os.close();
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.database.sqlite.SQLiteOpenHelper#onCreate(android.database.sqlite.SQLiteDatabase)
+	 */
 	@Override
 	public void onCreate(SQLiteDatabase arg0) {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see android.database.sqlite.SQLiteOpenHelper#onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
+	 */
 	@Override
 	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
 
 	}
 
+	/**
+	 * @param table
+	 * @param columns
+	 * @param selection
+	 * @param selectionArgs
+	 * @param groupBy
+	 * @param having
+	 * @param orderBy
+	 * @param limit
+	 * @return
+	 */
 	public Cursor query(String table, String[] columns, String selection, String[] selectionArgs,
 			String groupBy, String having, String orderBy, int limit) {
 
@@ -147,12 +193,25 @@ public class AssetDBHelper extends SQLiteOpenHelper {
 				Integer.toString(limit));
 	}
 
+	/**
+	 * @param table
+	 * @param columns
+	 * @param selection
+	 * @param selectionArgs
+	 * @param groupBy
+	 * @param having
+	 * @param orderBy
+	 * @return
+	 */
 	public Cursor query(String table, String[] columns, String selection, String[] selectionArgs,
 			String groupBy, String having, String orderBy) {
 		//mLog.info(LOGTAG_, "SELECT " + columns.toString() + " FROM " + table + " WHERE " + selection);
 		return mDatabase.query(table, columns, selection, selectionArgs, groupBy, having, orderBy);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.database.sqlite.SQLiteOpenHelper#close()
+	 */
 	@Override
 	public synchronized void close() {
 		if (mDatabase != null) mDatabase.close();

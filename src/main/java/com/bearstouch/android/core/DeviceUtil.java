@@ -1,8 +1,13 @@
 package com.bearstouch.android.core;
-
 import android.app.Activity;
 import android.os.Build;
 import android.util.DisplayMetrics;
+
+/**
+ * 
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
 
 public class DeviceUtil
 {

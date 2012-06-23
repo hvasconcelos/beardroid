@@ -1,5 +1,4 @@
 package com.bearstouch.android.core;
-
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
@@ -10,6 +9,11 @@ import com.google.inject.Singleton;
 
 import android.content.Context;
 
+
+/**
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
 @Singleton
 public class CriptoUtil
 {
@@ -23,6 +27,10 @@ public class CriptoUtil
 	}
 	
 	
+	/**
+	 * @param val
+	 * @return
+	 */
 	public String md5Digest(String val) {
 	    String result = null;
 
@@ -45,6 +53,10 @@ public class CriptoUtil
 	    return result;
 	  }
 	
+	/**
+	 * @param val
+	 * @return
+	 */
 	public String sha1Digest(String val) {
 	    String result = null;
 

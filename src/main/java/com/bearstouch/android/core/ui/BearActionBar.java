@@ -1,5 +1,4 @@
 package com.bearstouch.android.core.ui;
-
 import java.util.LinkedList;
 import com.bearstouch.android.core.R;
 import android.content.Context;
@@ -14,7 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import android.widget.TextView;
-
+/**
+ * 
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
 public class BearActionBar extends LinearLayout {
 
 	private RelativeLayout						mActionBarView;
@@ -34,17 +37,29 @@ public class BearActionBar extends LinearLayout {
 
 	
 	
+	/**
+	 * @param context
+	 */
 	public BearActionBar(Context context) {
 		this(context, null);
 		mContext = context;
 	}
 
+	/**
+	 * @param context
+	 * @param attrs
+	 */
 	public BearActionBar(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		mContext = context;
 		init(attrs);
 	}
 
+	/**
+	 * @param context
+	 * @param attrs
+	 * @param defstyle
+	 */
 	public BearActionBar(Context context, AttributeSet attrs, int defstyle) {
 		super(context, attrs);
 		mContext = context;
@@ -52,6 +67,9 @@ public class BearActionBar extends LinearLayout {
 
 	}
 
+	/**
+	 * @param attrs
+	 */
 	private void init(AttributeSet attrs) {
 
 		mItems=new LinkedList<BearActionBarItem>();
@@ -92,72 +110,119 @@ public class BearActionBar extends LinearLayout {
 
 	}
 
+	/**
+	 * @param resid
+	 */
 	public void setHomeLogo(int resid) {
 		mLogoDrawable = mContext.getResources().getDrawable(resid);
 		mLogoViewIcon.setBackgroundDrawable(mLogoDrawable);
 
 	}
 
+	/**
+	 * @param image
+	 */
 	public void setHomeLogo(Drawable image) {
 		mLogoDrawable = image;
 		mLogoViewIcon.setBackgroundDrawable(mLogoDrawable);
 	}
 
+	/**
+	 * @param resid
+	 */
 	public void setTitle(int resid) {
 		mTitleText = mContext.getResources().getString(resid);
 		mTitleView.setText(mTitleText);
 	}
 
+	/**
+	 * @param title
+	 */
 	public void setTitle(String title) {
 		mTitleText = title;
 		mTitleView.setText(mTitleText);
 	}
 
+	/**
+	 * @param homelistener
+	 */
 	public void setOnLogoClickListener(OnClickListener homelistener) {
 		mLogoViewLayout.setOnClickListener(homelistener);
 	}
 
+	/**
+	 * @param position
+	 * @param actionlistener
+	 */
 	public void setOnActionClickListener(int position,
 			OnClickListener actionlistener) {
 		mItems.get(position).setOnClickListener(actionlistener);
 		mActionsLayout.getChildAt(position);
 	}
 
+	/**
+	 * @param position
+	 * @return
+	 */
 	public BearActionBarItem getItem(int position) {
 		return mItems.get(position);
 	}
 
+	/**
+	 * @param item
+	 */
 	public void addItem(BearActionBarItem item) {
 		mItems.push(item);
 		mActionsLayout.addView(item.getItemView());
 
 	}
 
+	/**
+	 * @param position
+	 * @param item
+	 */
 	public void addItem(int position, BearActionBarItem item) {
 		mItems.add(position, item);
 		mActionsLayout.addView(item.getItemView());
 
 	}
 
+	/**
+	 * @return
+	 */
 	public int getItemsCount() {
 		return mItems.size();
 	}
 
+	/**
+	 * @param position
+	 */
 	public void removeItem(int position) {
 		mItems.remove(position);
 		mActionsLayout.removeViewAt(position);
 	}
 
+	/**
+	 * @param item
+	 */
 	public void removeItem(BearActionBarItem item) {
 		mItems.remove(item);
 		mActionsLayout.removeView(item.getItemView());
 	}
 
+	/**
+	 * 
+	 */
 	public void removeItems() {
 		mItems.clear();
 		mActionsLayout.removeAllViews();
 	}
 
+	/**
+	 * @param description
+	 * @param resid
+	 * @return
+	 */
 	public BearActionBarItem createItem(String description,int resid){
 		
 		return new BearActionBarItem(this, mContext, resid, description);
@@ -175,6 +240,12 @@ public class BearActionBar extends LinearLayout {
 		private LayoutInflater	mInflater;
 
 
+		/**
+		 * @param ActionBar
+		 * @param context
+		 * @param drawableid
+		 * @param contentdescription
+		 */
 		public BearActionBarItem(BearActionBar ActionBar, Context context,
 				int drawableid, String contentdescription) {
 			mContext = context;
@@ -191,28 +262,46 @@ public class BearActionBar extends LinearLayout {
 			mView.setImageResource(drawableid);
 		}
 
+		/**
+		 * @param clikListener
+		 */
 		public void setOnClickListener(OnClickListener clikListener) {
 			mOnClickListener = clikListener;
 			mLayout.setOnClickListener(clikListener);
 		}
 
+		/**
+		 * @return
+		 */
 		public View getItemView() {
 			return mLayout;
 		}
 
+		/**
+		 * @param resid
+		 */
 		public void setDrawable(int resid) {
 			mView.setBackgroundResource(resid);
 		}
 
+		/**
+		 * @param drawable
+		 */
 		public void setDrawable(Drawable drawable) {
 			mView.setBackgroundDrawable(drawable);
 
 		}
 
+		/**
+		 * @return
+		 */
 		public String getDescription() {
 			return mContentDescription;
 		}
 
+		/**
+		 * @param description
+		 */
 		public void setDescription(String description) {
 			mContentDescription = description;
 		}

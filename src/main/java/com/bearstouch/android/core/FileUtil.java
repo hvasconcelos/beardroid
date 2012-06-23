@@ -8,8 +8,18 @@ import java.io.Reader;
 import android.content.Context;
 import android.os.Environment;
 
+/**
+ * 
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
+
 public class FileUtil {
 	
+	/**
+	 * @param fis
+	 * @return
+	 */
 	public static String readFileContentToString(InputStream fis)
 	{
 		StringBuffer stringBuffer = new StringBuffer();
@@ -38,12 +48,20 @@ public class FileUtil {
 	}
 	
 	
+	/**
+	 * @param context
+	 * @return
+	 */
 	public static String getSDCardCachePath(Context context){
 		 String cacheDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/"
        + context.getPackageName() + "/cache";
 		return cacheDir;
 	}
 	
+	/**
+	 * @param context
+	 * @return
+	 */
 	public static String getInternalCachePath(Context context){
 		return context.getCacheDir().getAbsolutePath();
 	}

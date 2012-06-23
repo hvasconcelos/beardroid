@@ -1,5 +1,6 @@
 package com.bearstouch.android.core;
 
+
 import java.util.UUID;
 
 import com.google.inject.Inject;
@@ -12,6 +13,11 @@ import android.os.Build;
 import android.provider.Settings.Secure;
 import android.util.DisplayMetrics;
 
+/**
+ * 
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
 @Singleton
 public class InstallTracker {
 	// ///////////////////////////////

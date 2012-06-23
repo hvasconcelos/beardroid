@@ -1,5 +1,4 @@
 package com.bearstouch.android.core.image;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,16 +12,16 @@ import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-
-
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
+/**
+ * 
+ *
+ */
 public class ImageLoader {
     
     MemoryCache memoryCache=new MemoryCache();
@@ -30,11 +29,18 @@ public class ImageLoader {
     private Map<ImageView, String> imageViews=Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
     ExecutorService executorService; 
     
+    /**
+     * @param context
+     */
     public ImageLoader(Context context){
         fileCache=new FileCache(context);
         executorService=Executors.newFixedThreadPool(5);
     }
     
+    /**
+     * @param url
+     * @param imageView
+     */
     public void DisplayImage(String url, ImageView imageView)
     {
         imageViews.put(imageView, url);
@@ -49,12 +55,20 @@ public class ImageLoader {
         }
     }
         
+    /**
+     * @param url
+     * @param imageView
+     */
     private void queuePhoto(String url, ImageView imageView)
     {
         PhotoToLoad p=new PhotoToLoad(url, imageView);
         executorService.submit(new PhotosLoader(p));
     }
     
+    /**
+     * @param url
+     * @return
+     */
     private Bitmap getBitmap(String url) 
     {
         File f=fileCache.getFile(url);
@@ -84,7 +98,12 @@ public class ImageLoader {
         }
     }
 
-    //decodes image and scales it to reduce memory consumption
+
+    /**
+     * Decodes image and scales it to reduce memory consumption
+     * @param f
+     * @return
+     */
     private Bitmap decodeFile(File f){
         try {
             //decode image size
@@ -112,7 +131,7 @@ public class ImageLoader {
         return null;
     }
     
-    //Task for the queue
+
     private class PhotoToLoad
     {
         public String url;

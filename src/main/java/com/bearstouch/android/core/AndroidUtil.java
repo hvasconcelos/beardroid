@@ -1,22 +1,11 @@
 package com.bearstouch.android.core;
 
-
 import com.bearstouch.android.core.R;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
-
-
-import com.bugsense.trace.BugSense;
-import com.bugsense.trace.BugSenseHandler;
-import com.google.inject.name.Named;
-
-
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -32,19 +21,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//import com.google.ads.Ad;
-//import com.google.ads.AdListener;
-//import com.google.ads.AdRequest;
-//import com.google.ads.AdSize;
-//import com.google.ads.AdView;
-//import com.google.ads.AdRequest.ErrorCode;
-
-
+/**
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
 public class AndroidUtil {
 	
 	private static double density = -1;
 	
 	
+	/**
+	 * @param ctx
+	 * @return
+	 */
 	public static boolean isDebugVersion(Context ctx){	
 		int flags = ctx.getApplicationInfo().flags;
 		if ((flags &= ApplicationInfo.FLAG_DEBUGGABLE)!=0){
@@ -55,6 +44,14 @@ public class AndroidUtil {
 		}		
 	}
 
+	/**
+	 * @param ctx
+	 * @param layoutid
+	 * @param textid
+	 * @param alertTitle
+	 * @param alertMessage
+	 * @return
+	 */
 	public static Dialog createAlert(Context ctx, int layoutid,int textid,String alertTitle,String alertMessage)
 	{
 		Dialog dialog;
@@ -68,7 +65,11 @@ public class AndroidUtil {
 
 	}
 
-	 public static double getDensity(Activity activity) {
+	 /**
+	 * @param activity
+	 * @return
+	 */
+	public static double getDensity(Activity activity) {
 	    if (density == -1) {
 	      DisplayMetrics displayMetrics = new DisplayMetrics();
 	      activity.getWindowManager().getDefaultDisplay()
@@ -79,7 +80,11 @@ public class AndroidUtil {
 	    return density;
 	  }
 	 
-	 public static DisplayMetrics getDisplayMetrics(Activity activity){
+	 /**
+	 * @param activity
+	 * @return
+	 */
+	public static DisplayMetrics getDisplayMetrics(Activity activity){
 		  DisplayMetrics displayMetrics=null;
 		  if (density == -1) {
 			  displayMetrics= new DisplayMetrics();
@@ -91,38 +96,15 @@ public class AndroidUtil {
 		  return displayMetrics; 
 	  }
 	 
-	 public static void activateBugSense(Context ctx,String testingID,String releaseID){
-			if(isDebugVersion(ctx)){				
-				BugSenseHandler.setup(ctx,testingID);
-				Log.d("Bugsense", "Activating Testing Bugsenseid="+testingID);
-			}else{
-				//Log.d("Bugsense", "Activating Release Bugsenseid="+releaseID);
-				BugSenseHandler.setup(ctx,releaseID);
-			}
-	 }
 	 
-//	public static void fillAddMob(Activity activity, Window mainLout,
-//			AdView adView,AdListener listener)
-//	{
-//		// Create the adView
-//		adView = new AdView(activity, AdSize.BANNER, "a14e7230bc8f2ac");
-//		LinearLayout layout = (LinearLayout) activity.findViewById(R.id.adLayout);
-//		layout.setVisibility(View.VISIBLE);
-//	
-//		//ImageView bearView=(ImageView) layout.findViewById(R.id.downloadLink);
-//		layout.setOnClickListener(new LauchProListener(activity));
-//		
-//		// Add the adView to it
-//		layout.addView(adView);
-//		AdRequest adreq = new AdRequest();
-//		adView.setAdListener(listener);
-//		adView.loadAd(adreq);
-//	
-//		
-//	}
-	
-
-
+   
+	/**
+	 * @param ctx
+	 * @param emailAddresses
+	 * @param CCAddresses
+	 * @param subject
+	 * @param message
+	 */
 	public static void sendEmail(Context ctx, String[] emailAddresses,
 			String[] CCAddresses, String subject, String message)
 	{
@@ -145,6 +127,10 @@ public class AndroidUtil {
 
 	}
 
+	/**
+	 * @param ctx
+	 * @param id
+	 */
 	public static void showToast(Context ctx, int id)
 	{
 
@@ -155,6 +141,10 @@ public class AndroidUtil {
 		toast.show();
 	}
 
+	/**
+	 * @param ctx
+	 * @param message
+	 */
 	public static void showToast(Context ctx, String message)
 	{
 
@@ -166,6 +156,9 @@ public class AndroidUtil {
 	
 	
 	
+	/**
+	 * @return
+	 */
 	public static boolean isExternalStorageAvailableforWriting(){
 		
 	
@@ -179,6 +172,9 @@ public class AndroidUtil {
 		
 	}
 	
+	/**
+	 * @return
+	 */
 	public static boolean isExternalStorageAvailableforReading(){
 		
 		
@@ -192,6 +188,10 @@ public class AndroidUtil {
 		
 	}
 		
+	/**
+	 * @param ctx
+	 * @return
+	 */
 	public static boolean isRunningOnEmulator(Context ctx){
 		if (Secure.getString(ctx.getContentResolver(), Secure.ANDROID_ID)==null){			
 			return true;
@@ -200,6 +200,11 @@ public class AndroidUtil {
 		}
 	}
 	
+	/**
+	 * @param ctx
+	 * @param pref
+	 * @return
+	 */
 	public static boolean savePreferencesInExternal(Context ctx,SharedPreferences pref){
 		
 		Properties propfile=new Properties();
@@ -228,16 +233,6 @@ public class AndroidUtil {
 			return false;
 		}
 	}
-	
-	
-//	int dpiToPixel(int dpi){
-//		
-//		
-//	}
-//	
-//	
-//	int pixelToDpi(int pixelsize){
-//		
-//	}
+
 	
 }

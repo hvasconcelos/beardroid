@@ -1,23 +1,14 @@
-//////////////////////////////////////////////////////////////////////
-//	
-// Mobitto Android Application
-//	
-//	Author:  Helder Vasconcelos (Bearstouch Software) 
-//			  <helder.vasc@beartsouch.com>
-// 
-//////////////////////////////////////////////////////////////////////
+/**
+ * 
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
 package com.bearstouch.android.core.ui;
 
-import java.util.Hashtable;
 
 import com.google.inject.Inject;
-import com.google.inject.Singleton;
-
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -28,30 +19,35 @@ import android.widget.TextView;
 public class FontManager {
 
 	private Typeface typeface ;
-
-	/**
-	 * Private helper
-	 * 
-	 * @param context
-	 * @param textView
-	 * @param value
-	 */
 	
+	/**
+	 * @param context
+	 * @param fontFile
+	 */
 	@Inject
-	public FontManager(Context context){
-		typeface = Typeface.createFromAsset(context.getAssets(), "helvetica_light.ttf");
+	public FontManager(Context context,String fontFile){
+		typeface = Typeface.createFromAsset(context.getAssets(), fontFile);
 	}
 	/**
 	 * 
+	 */
+	/**
+	 * @param textView
 	 */
 	public void apply(TextView textView) {
 		textView.setTypeface(typeface);
 	}
 	
+	/**
+	 * @param textView
+	 */
 	public void apply(EditText textView) {
 		textView.setTypeface(typeface);
 	}
 
+	/**
+	 * @return
+	 */
 	public Typeface getTypeface() {
 		return typeface;
 	}

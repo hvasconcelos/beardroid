@@ -1,6 +1,5 @@
 package com.bearstouch.android.core;
 
-
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
@@ -9,6 +8,10 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.util.Log;
 
+/**
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
 @Singleton
 public class Logging
 {
@@ -16,6 +19,10 @@ public class Logging
 	boolean mIsDebuggable;
 	String mAppLogtag;
 
+	/**
+	 * @param applogtag
+	 * @param context
+	 */
 	@Inject
 	Logging(@Named("AppLogTag") String applogtag,Context context)
 	{
@@ -25,6 +32,9 @@ public class Logging
 		mIsDebuggable = isDebugVersion();
 	}
 
+	/**
+	 * @return
+	 */
 	private boolean isDebugVersion()
 	{
 
@@ -39,6 +49,11 @@ public class Logging
 		}
 	}
 
+	/**
+	 * @param tag
+	 * @param logMsg
+	 * @param e
+	 */
 	public void error(String tag, String logMsg, Exception e)
 	{
 		if (mIsDebuggable)
@@ -47,6 +62,10 @@ public class Logging
 		}
 	}
 	
+	/**
+	 * @param tag
+	 * @param logMsg
+	 */
 	public void error(String tag, String logMsg)
 	{
 		if (mIsDebuggable)
@@ -55,6 +74,10 @@ public class Logging
 		}
 	}
 
+	/**
+	 * @param tag
+	 * @param logMsg
+	 */
 	public void info(String tag, String logMsg)
 	{
 		if (mIsDebuggable)
@@ -63,12 +86,19 @@ public class Logging
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean isDebuggable()
 	{
 		return mIsDebuggable;
 	}
 
 
+	/**
+	 * @param tag
+	 * @param logMsg
+	 */
 	public void warning(String tag, String logMsg)
 	{
 		if (mIsDebuggable)

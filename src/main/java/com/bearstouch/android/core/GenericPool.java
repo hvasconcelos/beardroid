@@ -1,5 +1,11 @@
 package com.bearstouch.android.core;
 
+/**
+ * 
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
+
 import java.util.Stack;
 
 public abstract class GenericPool<T> {
@@ -9,14 +15,24 @@ public abstract class GenericPool<T> {
 	private int					mUnrecycledCount;
 	private int					mMaxSize;
 
+	/**
+	 * 
+	 */
 	public GenericPool() {
 		this(DEFAULT_SIZE);
 	}
 
+	/**
+	 * @param startSize
+	 */
 	public GenericPool(int startSize) {
 		this(DEFAULT_SIZE, Integer.MAX_VALUE);
 	}
 
+	/**
+	 * @param startSize
+	 * @param maxSize
+	 */
 	public GenericPool(int startSize, int maxSize) {
 		for (int i = 0; i < startSize; i++) {
 			mFreeItems.push(onAllocatePoolItem());
@@ -25,6 +41,9 @@ public abstract class GenericPool<T> {
 		mMaxSize = maxSize;
 	}
 
+	/**
+	 * @return
+	 */
 	public synchronized T get() {
 
 		if (mFreeItems.size() > 0) {
@@ -42,6 +61,9 @@ public abstract class GenericPool<T> {
 
 	}
 
+	/**
+	 * @param item
+	 */
 	public synchronized void recycle(T item) {
 		if (item == null) { throw new IllegalArgumentException(
 				"Cannot free null item!"); }
@@ -50,14 +72,26 @@ public abstract class GenericPool<T> {
 		onHandleRecycleItem(item);
 	}
 
+	/**
+	 * @return
+	 */
 	public int getSize() {
 		return mUnrecycledCount + mFreeItems.size();
 	}
 
+	/**
+	 * @return
+	 */
 	protected abstract T onAllocatePoolItem();
 
+	/**
+	 * @param itemRecycled
+	 */
 	protected abstract void onHandleRecycleItem(T itemRecycled);
 
+	/**
+	 * 
+	 */
 	public synchronized void clearPool() {
 		mFreeItems.clear();
 	}

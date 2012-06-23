@@ -1,30 +1,32 @@
-//////////////////////////////////////////////////////////////////////
-//	
-// Mobitto Android Application
-//	
-//	Author:  Helder Vasconcelos (Bearstouch Software) 
-//			  <helder.vasc@beartsouch.com>
-// 
-//////////////////////////////////////////////////////////////////////
 package com.bearstouch.android.core.image;
 
 import java.io.File;
 import android.content.Context;
 
+/**
+ *
+ */
 public class FileCache {
     
     private File cacheDir;
     
+    /**
+     * @param context
+     */
     public FileCache(Context context){
         //Find the dir to save cached images
         if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-            cacheDir=new File(android.os.Environment.getExternalStorageDirectory(),"Mobitto");
+            cacheDir=new File(android.os.Environment.getExternalStorageDirectory(),"beardroid");
         else
             cacheDir=context.getCacheDir();
         if(!cacheDir.exists())
             cacheDir.mkdirs();
     }
     
+    /**
+     * @param url
+     * @return
+     */
     public File getFile(String url){
         //I identify images by hashcode. Not a perfect solution, good for the demo.
         String filename=String.valueOf(url.hashCode());
@@ -35,6 +37,9 @@ public class FileCache {
         
     }
     
+    /**
+     * 
+     */
     public void clear(){
         File[] files=cacheDir.listFiles();
         if(files==null)

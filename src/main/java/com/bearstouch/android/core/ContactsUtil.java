@@ -2,7 +2,6 @@ package com.bearstouch.android.core;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
@@ -16,7 +15,19 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 
+
+/**
+ * @author HŽlder Vasconcelos heldervasc@bearstouch.com
+ *
+ */
 public class ContactsUtil {
+	
+	
+	/**
+	 * @param ctx
+	 * @param id
+	 * @return
+	 */
 	public static Bitmap getContactPhoto(Context ctx, int id)
 	{
 
@@ -37,6 +48,11 @@ public class ContactsUtil {
 
 	}
 
+	/**
+	 * @param ctx
+	 * @param contactId
+	 * @return
+	 */
 	public static String getDysplayNamefromId(Context ctx, long contactId)
 	{
 
@@ -56,6 +72,10 @@ public class ContactsUtil {
 		return "";
 	}
 
+	/**
+	 * @param ctx
+	 * @return
+	 */
 	public static ArrayList<Integer> getOrderedContactsListIds(Context ctx)
 	{
 
@@ -82,6 +102,10 @@ public class ContactsUtil {
 
 	}
 
+	/**
+	 * @param ctx
+	 * @return
+	 */
 	public static MatrixCursor getOrderedContactsWithPhoneList(Context ctx)
 	{
 		MatrixCursor cursortoreturn;

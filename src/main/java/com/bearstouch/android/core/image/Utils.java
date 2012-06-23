@@ -1,17 +1,17 @@
-//////////////////////////////////////////////////////////////////////
-//	
-// Mobitto Android Application
-//	
-//	Author:  Helder Vasconcelos (Bearstouch Software) 
-//			  <helder.vasc@beartsouch.com>
-// 
-//////////////////////////////////////////////////////////////////////
 package com.bearstouch.android.core.image;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * 
+ *
+ */
 public class Utils {
+    /**
+     * @param is
+     * @param os
+     */
     public static void CopyStream(InputStream is, OutputStream os)
     {
         final int buffer_size=1024;

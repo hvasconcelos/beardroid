@@ -1,11 +1,3 @@
-//////////////////////////////////////////////////////////////////////
-//	
-// Mobitto Android Application
-//	
-//	Author:  Helder Vasconcelos (Bearstouch Software) 
-//			  <helder.vasc@beartsouch.com>
-// 
-//////////////////////////////////////////////////////////////////////
 package com.bearstouch.android.core.image;
 
 import java.util.Collections;
@@ -13,14 +5,16 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import roboguice.util.Ln;
 import android.graphics.Bitmap;
-import android.util.Log;
 
+/**
+ * 
+ *
+ */
 public class MemoryCache {
 
-    private static final String TAG = "MobittoImageMemoryCache";
+    private static final String TAG = "MemoryCache";
     private Map<String, Bitmap> cache=Collections.synchronizedMap(
             new LinkedHashMap<String, Bitmap>(10,1.5f,true));//Last argument true for LRU ordering
     private long size=0;//current allocated size
@@ -31,17 +25,28 @@ public class MemoryCache {
         setLimit(Runtime.getRuntime().maxMemory()/4);
     }
     
+    /**
+     * @param new_limit
+     */
     public void setLimit(long new_limit){
         limit=new_limit;
         Ln.d("MemoryCache will use up to "+limit/1024./1024.+"MB");
     }
 
+    /**
+     * @param id
+     * @return
+     */
     public Bitmap get(String id){
         if(!cache.containsKey(id))
             return null;
         return cache.get(id);
     }
 
+    /**
+     * @param id
+     * @param bitmap
+     */
     public void put(String id, Bitmap bitmap){
         try{
             if(cache.containsKey(id))
@@ -54,6 +59,9 @@ public class MemoryCache {
         }
     }
 
+    /**
+     * 
+     */
     private void checkSize() {
         Ln.d("cache size="+size+" length="+cache.size());
         if(size>limit){
@@ -69,6 +77,9 @@ public class MemoryCache {
         }
     }
 
+    /**
+     * 
+     */
     public void clear() {   	  
         cache.clear();
         size=0;

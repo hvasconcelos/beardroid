@@ -3,6 +3,8 @@ Some usefull code to create Amazing Android Apps.
 The project lacks a lot of documentation.Please contribute to the project and share your thoughts about it. 
 Our aim is create a bunch of boilerplate code for Android Application development.
 
+Soon I will create a bunch of tutorials to use BearDroid in your applications.
+
 ## Prerequisites
 
 maven-android-sdk-deployer https://github.com/mosabua/maven-android-sdk-deployer
@@ -26,6 +28,7 @@ Add the library to your maven dependencies list
     <version>2.0.0</version>
     <type>apklib</type>
     </dependency>  
+
 
 
 ## About me

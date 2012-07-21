@@ -3,6 +3,16 @@ Some usefull code to create Amazing Android Apps.
 The project lacks a lot of documentation.Please contribute to the project and share your thoughts about it. 
 Our aim is create a bunch of boilerplate code for Android Application development.
 
+Most Usefull Classes :
+GoogleAnaliticsProvider
+InstallTracker
+FileUtil
+ContactsUtil
+ImageCacheManager
+AssetDbHelper
+BearActionbar
+WebLinkView
+
 Soon I will create a bunch of tutorials to use BearDroid in your applications.
 
 ## Prerequisites

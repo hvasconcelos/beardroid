@@ -1,110 +1,65 @@
+/**
+ * Copyright (C) 2013
+ * Bearstouch Software : <mail@bearstouch.com>
+ *
+ * This file is part of Bearstouch Android Lib.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.bearstouch.android.core;
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
-import com.google.inject.name.Named;
-
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.util.Log;
 
-/**
- * @author HŽlder Vasconcelos heldervasc@bearstouch.com
- *
- */
-@Singleton
-public class Logging
-{
-	Context mContext;	
-	boolean mIsDebuggable;
-	String mAppLogtag;
-
-	/**
-	 * @param applogtag
-	 * @param context
-	 */
-	@Inject
-	Logging(@Named("AppLogTag") String applogtag,Context context)
-	{
-
-		mContext = context;
-		mAppLogtag=applogtag;
-		mIsDebuggable = isDebugVersion();
-	}
-
-	/**
-	 * @return
-	 */
-	private boolean isDebugVersion()
-	{
-
-		int flags = mContext.getApplicationInfo().flags;
-		if ((flags &= ApplicationInfo.FLAG_DEBUGGABLE) != 0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	/**
-	 * @param tag
-	 * @param logMsg
-	 * @param e
-	 */
-	public void error(String tag, String logMsg, Exception e)
-	{
-		if (mIsDebuggable)
-		{
-			Log.e(mAppLogtag+" - "+tag, logMsg,e);
-		}
-	}
-	
-	/**
-	 * @param tag
-	 * @param logMsg
-	 */
-	public void error(String tag, String logMsg)
-	{
-		if (mIsDebuggable)
-		{
-			Log.e(mAppLogtag+" - "+tag, logMsg);
-		}
-	}
-
-	/**
-	 * @param tag
-	 * @param logMsg
-	 */
-	public void info(String tag, String logMsg)
-	{
-		if (mIsDebuggable)
-		{
-			Log.i(mAppLogtag+" - "+tag, logMsg);
-		}
-	}
-
-	/**
-	 * @return
-	 */
-	public boolean isDebuggable()
-	{
-		return mIsDebuggable;
-	}
+public class Logging {
+    Context mContext;
+    boolean mIsDebuggable;
+    String logTag;
 
 
-	/**
-	 * @param tag
-	 * @param logMsg
-	 */
-	public void warning(String tag, String logMsg)
-	{
-		if (mIsDebuggable)
-		{
-			Log.w(mAppLogtag+" - "+tag, logMsg);
-		}
+    Logging(Context context) {
+        this.mContext = context;
+        this.mIsDebuggable = AndroidUtil.isDebugVersion(context);
+        this.logTag = context.getApplicationInfo().name;
+    }
 
-	}
+    public void exception(String tag, String logMsg, Exception e) {
+        if (mIsDebuggable) {
+            Log.e(logTag + " - " + tag, logMsg, e);
+        }
+    }
+
+
+    public void error(String tag, String logMsg) {
+        if (mIsDebuggable) {
+            Log.e(logTag + " - " + tag, logMsg);
+        }
+    }
+
+    public void info(String tag, String logMsg) {
+        if (mIsDebuggable) {
+            Log.i(logTag + " - " + tag, logMsg);
+        }
+    }
+
+    public boolean isDebuggable() {
+        return mIsDebuggable;
+    }
+
+    public void warning(String tag, String logMsg) {
+        if (mIsDebuggable) {
+            Log.w(logTag + " - " + tag, logMsg);
+        }
+
+    }
 }

@@ -41,7 +41,24 @@ Add the library to your maven dependencies list
     <type>apklib</type>
     </dependency>  
 
+# Using Google Analytics V2
 
+Create the file res/values/analytics.xml with this content
+
+    <?xml version="1.0" encoding="utf-8" ?>
+    <resources>
+      <!--Replace placeholder ID with your tracking ID-->
+      <string name="ga_trackingId">UA-XXXX-Y</string>
+
+      <!--Enable automatic activity tracking-->
+      <bool name="ga_autoActivityTracking">true</bool>
+
+      <!--Enable automatic exception tracking-->
+      <bool name="ga_reportUncaughtExceptions">true</bool>
+     </resources>
+
+
+To customize the Tracker behaviour please read https://developers.google.com/analytics/devguides/collection/android/v2/parameters
 
 ## About me
 

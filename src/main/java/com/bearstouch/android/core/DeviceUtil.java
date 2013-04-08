@@ -23,7 +23,7 @@ import android.os.Build;
 import android.util.DisplayMetrics;
 
 /**
- * @author H�lder Vasconcelos heldervasc@bearstouch.com
+ * @author Helder Vasconcelos heldervasc@bearstouch.com
  */
 
 public class DeviceUtil {

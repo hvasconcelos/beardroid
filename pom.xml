@@ -21,6 +21,8 @@
         <junit.version>4.8.2</junit.version>
         <android.version>4.1.1.4</android.version>
         <maven.compile.version>3.4.0</maven.compile.version>
+        <apache.codec.version>1.7</apache.codec.version>
+        <analytics.android.version>2</analytics.android.version>
     </properties>
     <dependencies>
         <dependency>
@@ -32,7 +34,12 @@
         <dependency>
             <groupId>com.google.android.analytics</groupId>
             <artifactId>analytics</artifactId>
-            <version>2</version>
+            <version>${analytics.android.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${apache.codec.version}</version>
         </dependency>
         <!-- TEST DEPENDENCIES -->
         <dependency>

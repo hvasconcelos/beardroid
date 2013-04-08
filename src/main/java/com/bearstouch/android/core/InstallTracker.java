@@ -24,12 +24,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.DisplayMetrics;
-
+import org.apache.commons.codec.digest.DigestUtils;
 import java.util.UUID;
 
-/**
- * @author Helder Vasconcelos heldervasc@bearstouch.com
- */
 
 public class InstallTracker {
     // ///////////////////////////////
@@ -83,8 +80,7 @@ public class InstallTracker {
 
             mUniqueID = UUID.randomUUID().toString();
             mInstallTimeStamp = System.currentTimeMillis();
-            mTimeStampHash = CriptoUtil.md5Digest(mUniqueID + Long.toString(mInstallTimeStamp));
-
+            mTimeStampHash=DigestUtils.shaHex(mUniqueID + Long.toString(mInstallTimeStamp));
             saveToPreferencesFile(mSettings, mUniqueID, mInstallTimeStamp, mTimeStampHash);
             mLogging.info(LOGTAG, "Install Info Saved with Success");
             return mUniqueID;
@@ -139,7 +135,7 @@ public class InstallTracker {
 
     private boolean verifyInstallID() {
 
-        String digestTemp = CriptoUtil.md5Digest(mUniqueID + Long.toString(mInstallTimeStamp));
+        String digestTemp = DigestUtils.shaHex(mUniqueID + Long.toString(mInstallTimeStamp));
         if (mTimeStampHash.compareTo(digestTemp) != 0) {
             return false;
         } else {

@@ -27,25 +27,12 @@ import android.util.DisplayMetrics;
 import org.apache.commons.codec.digest.DigestUtils;
 import java.util.UUID;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
+@Singleton
 public class InstallTracker {
-    // ///////////////////////////////
-    // Injected Dependencies
-    // ///////////////////////////////
-    Context mContext;
-    Logging mLogging;
-    GoogleAnaliticsTracker mGTracker;
-    // ////////////////////////////////////////
-    // Instance Members
-    // ////////////////////////////////////////
-    boolean mIsFirstTimeRunnig;
-    private String mUniqueID = null;
-    private String mTimeStampHash = null;
-    private long mInstallTimeStamp = 0;
-    private boolean mIsAValidInstall = false;
-    // ///////////////////////////////////////////////////////
-    // Constants
-    // //////////////////////////////////////////////////////////
+    
     private static final String UNIQUE_KEYID = "PID";
     private static final String INSTALL_TIMESTAMP_KEY = "ITSK";
     private static final String TIMESTAMP_HASH_KEY = "UIDHK";
@@ -58,7 +45,17 @@ public class InstallTracker {
     public static final String CPU_VAR = "CPU";
     public static final String INSTALLER_VAR = "Installer";
     public static final String INSTALL_TRACK_EVENT_TAG = "Install Event";
-
+      
+    private Context mContext;
+    private Logging mLogging;
+    private GoogleAnaliticsTracker mGTracker;
+    boolean mIsFirstTimeRunnig;
+    private String mUniqueID = null;
+    private String mTimeStampHash = null;
+    private long mInstallTimeStamp = 0;
+    private boolean mIsAValidInstall = false;
+    
+    @Inject 
     public InstallTracker(Context context, Logging logging, GoogleAnaliticsTracker gTracker) {
         mContext = context;
         mLogging = logging;
@@ -77,7 +74,6 @@ public class InstallTracker {
                     "First Time Running - Generating Unique Install ID");
             mIsFirstTimeRunnig = true;
             mIsAValidInstall = true;
-
             mUniqueID = UUID.randomUUID().toString();
             mInstallTimeStamp = System.currentTimeMillis();
             mTimeStampHash=DigestUtils.shaHex(mUniqueID + Long.toString(mInstallTimeStamp));
@@ -92,7 +88,6 @@ public class InstallTracker {
             if (!mIsAValidInstall) {
                 mLogging.error(LOGTAG, "Invalid Install = " + mUniqueID);
             } else {
-
                 mLogging.info(LOGTAG, "Unique ID Loaded = " + mUniqueID);
             }
             return mUniqueID;
@@ -100,7 +95,8 @@ public class InstallTracker {
 
     }
 
-    private void saveToPreferencesFile(SharedPreferences Settings, String deviceId, Long install_ts, String install_hash) {
+    private void saveToPreferencesFile(SharedPreferences Settings, String deviceId, 
+        Long install_ts, String install_hash) {
 
         SharedPreferences.Editor editor = Settings.edit();
         mLogging.info(LOGTAG, "Saving Unique Install ID = " + deviceId);
@@ -112,12 +108,8 @@ public class InstallTracker {
         editor.commit();
     }
 
-
     protected SharedPreferences getPreferenceFile() {
-
-
         return mContext.getSharedPreferences(INSTALLFILE, 0);
-
     }
 
     public boolean isFirstTimeRunning() {
@@ -141,7 +133,6 @@ public class InstallTracker {
         } else {
             return true;
         }
-
     }
 
     public boolean isInstallValid() {
@@ -150,7 +141,6 @@ public class InstallTracker {
 
     public void trackInstall(Activity activity, String app_name,
                              String app_version_name) {
-
 
         mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, APP_NAME_VAR, app_name, 1);
         mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, APP_VERSION_VAR,
@@ -174,41 +164,25 @@ public class InstallTracker {
             mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, "RESOLUTION",
                     Resolution, 1);
             mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, "DPI", dpis, 1);
-
         }
     }
 
-    /**
-     * @param mIsFirstTimeRunnig the mIsFirstTimeRunnig to set
-     */
     protected void setmIsFirstTimeRunnig(boolean mIsFirstTimeRunnig) {
         this.mIsFirstTimeRunnig = mIsFirstTimeRunnig;
     }
 
-    /**
-     * @param mUniqueID the mUniqueID to set
-     */
     protected void setmUniqueID(String mUniqueID) {
         this.mUniqueID = mUniqueID;
     }
 
-    /**
-     * @param mTimeStampHash the mTimeStampHash to set
-     */
     protected void setmTimeStampHash(String mTimeStampHash) {
         this.mTimeStampHash = mTimeStampHash;
     }
 
-    /**
-     * @param mInstallTimeStamp the mInstallTimeStamp to set
-     */
     protected void setmInstallTimeStamp(long mInstallTimeStamp) {
         this.mInstallTimeStamp = mInstallTimeStamp;
     }
 
-    /**
-     * @param mIsAValidInstall the mIsAValidInstall to set
-     */
     protected void setmIsAValidInstall(boolean mIsAValidInstall) {
         this.mIsAValidInstall = mIsAValidInstall;
     }

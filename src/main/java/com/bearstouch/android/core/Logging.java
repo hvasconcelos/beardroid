@@ -21,12 +21,16 @@ package com.bearstouch.android.core;
 import android.content.Context;
 import android.util.Log;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
+@Singleton
 public class Logging {
     Context mContext;
     boolean mIsDebuggable;
     String logTag;
 
-
+    @Inject
     Logging(Context context) {
         this.mContext = context;
         this.mIsDebuggable = AndroidUtil.isDebugVersion(context);
@@ -38,7 +42,6 @@ public class Logging {
             Log.e(logTag + " - " + tag, logMsg, e);
         }
     }
-
 
     public void error(String tag, String logMsg) {
         if (mIsDebuggable) {
@@ -60,6 +63,5 @@ public class Logging {
         if (mIsDebuggable) {
             Log.w(logTag + " - " + tag, logMsg);
         }
-
     }
 }

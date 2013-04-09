@@ -23,16 +23,18 @@ import com.google.analytics.tracking.android.GAServiceManager;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
+@Singleton
 public class GoogleAnaliticsTracker {
 
     Context context;
     GoogleAnalytics mGInstance;
     private Tracker mGTracker;
-
-
+    
+    @Inject 
     public GoogleAnaliticsTracker(Context context) {
-
         this.context = context;
         // Get singleton.
         mGInstance = GoogleAnalytics.getInstance(context);

@@ -30,21 +30,27 @@ import com.bearstouch.android.core.Logging;
 import java.io.*;
 import java.util.Arrays;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 public class AssetDBHelper extends SQLiteOpenHelper {
 
     public static String LOGTAG_ = "BearDBHelper";
-    Context mContext;
-    String mDatabaseName;
-    int mDatabaseVersion;
-    AssetManager mAssetManager;
-    Logging mLog;
-    SQLiteDatabase mDatabase = null;
-    String mPackageName;
-    String mDBPath;
-
-    public AssetDBHelper(String package_name,
-                         String database_name,
-                         int database_version, Context context, Logging log) {
+    
+    private Context mContext;
+    private String mDatabaseName;
+    private int mDatabaseVersion;
+    private AssetManager mAssetManager;
+    private Logging mLog;
+    private SQLiteDatabase mDatabase = null;
+    private String mPackageName;
+    private String mDBPath;
+  
+    @Inject 
+    public AssetDBHelper( @Named("packageName") String package_name,
+                          @Named("databaseName") String database_name,
+                          @Named("databaseVersion") int database_version, 
+                          Context context, Logging log) {
         super(context, database_name, null, database_version);
 
         mContext = context;
@@ -52,6 +58,7 @@ public class AssetDBHelper extends SQLiteOpenHelper {
         mDatabaseVersion = database_version;
         mLog = log;
         mAssetManager = mContext.getAssets();
+
         mLog.info(LOGTAG_, " Database helper for Database Name=" + mDatabaseName + " and version "
                 + mDatabaseVersion);
 
@@ -163,5 +170,4 @@ public class AssetDBHelper extends SQLiteOpenHelper {
         if (mDatabase != null) mDatabase.close();
         super.close();
     }
-
 }

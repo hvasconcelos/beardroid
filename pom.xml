@@ -23,6 +23,7 @@
         <maven.compile.version>3.4.0</maven.compile.version>
         <apache.codec.version>1.7</apache.codec.version>
         <analytics.android.version>2</analytics.android.version>
+        <roboguice.version>2.0</roboguice.version>
     </properties>
     <dependencies>
         <dependency>
@@ -40,6 +41,11 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${apache.codec.version}</version>
+          </dependency>
+        <dependency>
+            <groupId>org.roboguice</groupId>
+            <artifactId>roboguice</artifactId>
+            <version>${roboguice.version}</version>
         </dependency>
         <!-- TEST DEPENDENCIES -->
         <dependency>

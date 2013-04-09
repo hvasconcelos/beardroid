@@ -29,27 +29,33 @@ import com.bearstouch.android.core.Logging;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 public class BearDBHelper extends SQLiteOpenHelper {
 
     public static String MIGRATIONS_DIRECTORY = "db_migrations";
     public static String LOGTAG_ = "BearDBHelper";
 
-    //Instance Fields
-    String mDatabaseName;
-    int mDatabaseVersion;
-    Context mContext;
-    AssetManager mAssetManager;
-    Logging mLog;
-    SQLiteDatabase mDatabase = null;
-
-    public BearDBHelper(String database_name, Integer database_version, Context context, Logging log) {
+    private String mDatabaseName;
+    private int mDatabaseVersion;
+    private Context mContext;
+    private AssetManager mAssetManager;
+    private Logging mLog;
+    private SQLiteDatabase mDatabase = null;
+  
+    @Inject
+    public BearDBHelper( @Named("databaseName") String database_name,
+        @Named("databaseVersion")  Integer database_version, Context context, Logging log) {
         super(context, database_name, null, database_version);
+
         mDatabaseName = database_name;
         mDatabaseVersion = database_version;
         mContext = context;
         mAssetManager = mContext.getAssets();
         mLog = log;
-        mLog.info(LOGTAG_, " Database helper for Database Name=" + mDatabaseName + " and version " + mDatabaseVersion);
+        mLog.info(LOGTAG_, " Database helper for Database Name=" + mDatabaseName + 
+            " and version " + mDatabaseVersion);
         mDatabase = getWritableDatabase();
     }
 
@@ -67,7 +73,8 @@ public class BearDBHelper extends SQLiteOpenHelper {
     }
 
     private void downgrade(SQLiteDatabase db, int newVersion, int oldVersion) {
-        mLog.info(LOGTAG_, "Database Downgrading from version[" + oldVersion + "] to version [" + newVersion + "]");
+        mLog.info(LOGTAG_, "Database Downgrading from version[" + 
+            oldVersion + "] to version [" + newVersion + "]");
         for (int i = oldVersion; i > newVersion; i--) {
 
             try {
@@ -77,7 +84,6 @@ public class BearDBHelper extends SQLiteOpenHelper {
                 String script = FileUtil.readFileContentToString(is);
                 mLog.info(LOGTAG_, "Executing = " + script);
                 db.execSQL(script);
-
                 db.endTransaction();
             } catch (IOException e) {
                 db.endTransaction();
@@ -89,7 +95,8 @@ public class BearDBHelper extends SQLiteOpenHelper {
 
     private void upgrade(SQLiteDatabase db, int newVersion, int oldVersion) {
 
-        mLog.info(LOGTAG_, "Database Upgrading from version[" + oldVersion + "] to version [" + newVersion + "]");
+        mLog.info(LOGTAG_, "Database Upgrading from version[" + oldVersion 
+            + "] to version [" + newVersion + "]");
         for (int i = oldVersion; i <= newVersion; i++) {
 
             try {
@@ -111,7 +118,6 @@ public class BearDBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         upgradeToVersion(db, oldVersion, mDatabaseVersion);
-
     }
 
     //Open an close Database
@@ -123,13 +129,15 @@ public class BearDBHelper extends SQLiteOpenHelper {
         sqldata.close();
     }
 
-    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit) {
+    public Cursor query(String table, String[] columns, String selection, 
+        String[] selectionArgs, String groupBy, String having, String orderBy, String limit) {
 
         mLog.info(LOGTAG_, "SELECT " + columns.toString() + " FROM " + table + " WHERE " + selection);
         return mDatabase.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
     }
 
-    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
+    public Cursor query(String table, String[] columns, String selection, 
+        String[] selectionArgs, String groupBy, String having, String orderBy) {
         mLog.info(LOGTAG_, "SELECT " + columns.toString() + " FROM " + table + " WHERE " + selection);
         return mDatabase.query(table, columns, selection, selectionArgs, groupBy, having, orderBy);
     }

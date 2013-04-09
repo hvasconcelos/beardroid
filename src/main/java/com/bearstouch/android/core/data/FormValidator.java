@@ -20,7 +20,7 @@ package com.bearstouch.android.core.data;
 
 /**
  *
- * @author H�lder Vasconcelos heldervasc@bearstouch.com
+ * @author Helder Vasconcelos heldervasc@bearstouch.com
  *
  */
 

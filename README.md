@@ -5,25 +5,18 @@ Our aim is create a bunch of boilerplate code for Android Application developmen
 
 Main Classes:
 
-* GoogleAnaliticsProvider
-* InstallTracker
-* FileUtil
-* ContactsUtil
-* ImageCacheManager
-* ImageLoader
-* AssetDbHelper
-* BearActionbar
-* WebLinkView
+* GoogleAnalyticsTracker - Track Events and Exceptions
+* InstallTracker -Track Application Install and Update
+* FileUtil -
+* ContactsUtil - Some usefull functions to get the phone contacts
+* ImageCacheManager - Cache Manager for your downloaded images
+* ImageLoader - Load and crop a image from a URL
+* AssetDbHelper - load your database from asset folder
+* FontManager - Manage your loaded fonts
+* WebLinkView - View that opens a webpage on click
+* Logging - Automatically disabled logs on production versions
 
 Soon I will create a bunch of tutorials to use BearDroid in your applications.
-
-## Prerequisites
-
-maven-android-sdk-deployer https://github.com/mosabua/maven-android-sdk-deployer
-
-google-analytics - jar installed in your maven local repo
-
-roboguice 1.1 - jar installed in you  maven local repo
 
 ## How to use it?
 First you need to install the library in your maven local repositoty
@@ -37,11 +30,11 @@ Add the library to your maven dependencies list
     <dependency>
     <groupId>com.bearstouch</groupId>
     <artifactId>bsdroid</artifactId>
-    <version>2.0.0</version>
+    <version>3.0.0</version>
     <type>apklib</type>
     </dependency>  
 
-# Using Google Analytics V2
+# To use GoogleAnalyticsTracker
 
 Create the file res/values/analytics.xml with this content
 
@@ -56,9 +49,6 @@ Create the file res/values/analytics.xml with this content
       <!--Enable automatic exception tracking-->
       <bool name="ga_reportUncaughtExceptions">true</bool>
      </resources>
-
-
-To customize the Tracker behaviour please read https://developers.google.com/analytics/devguides/collection/android/v2/parameters
 
 ## About me
 

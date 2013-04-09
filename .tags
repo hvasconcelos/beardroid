@@ -1,0 +1,380 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ALL_CODE_TYPES	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final Collection<String> ALL_CODE_TYPES = null;$/;"	f	class:IntentIntegrator
+APP_NAME_VAR	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public static final String APP_NAME_VAR = "Application Name";$/;"	f	class:InstallTracker
+APP_VERSION_VAR	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public static final String APP_VERSION_VAR = "Application Version";$/;"	f	class:InstallTracker
+About me	README.md	/^## About me$/;"	i
+AndroidUtil	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^public class AndroidUtil {$/;"	c
+AssetDBHelper	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    public AssetDBHelper(String package_name,$/;"	m	class:AssetDBHelper
+AssetDBHelper	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^public class AssetDBHelper extends SQLiteOpenHelper {$/;"	c
+BS_PACKAGE	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private static final String BS_PACKAGE = "com.google.zxing.client.android";$/;"	f	class:IntentIntegrator	file:
+Bear Droid Library	README.md	/^## Bear Droid Library$/;"	i
+BearActionBar	gen/com/bearstouch/android/core/R.java	/^        public static final int[] BearActionBar = {$/;"	f	class:R.styleable
+BearActionBar_action_bar_logo_drawable	gen/com/bearstouch/android/core/R.java	/^        public static final int BearActionBar_action_bar_logo_drawable = 0;$/;"	f	class:R.styleable
+BearActionBar_action_bar_title	gen/com/bearstouch/android/core/R.java	/^        public static final int BearActionBar_action_bar_title = 1;$/;"	f	class:R.styleable
+BearDBHelper	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    public BearDBHelper(String database_name, Integer database_version, Context context, Logging log) {$/;"	m	class:BearDBHelper
+BearDBHelper	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^public class BearDBHelper extends SQLiteOpenHelper {$/;"	c
+BitmapDisplayer	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^        public BitmapDisplayer(Bitmap b, PhotoToLoad p) {$/;"	m	class:ImageLoader.BitmapDisplayer
+BitmapDisplayer	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    class BitmapDisplayer implements Runnable {$/;"	c	class:ImageLoader
+BuildConfig	gen/com/bearstouch/android/core/BuildConfig.java	/^public final class BuildConfig {$/;"	c
+BuildConfig	target/generated-sources/r/com/bearstouch/android/core/BuildConfig.java	/^public final class BuildConfig {$/;"	c
+CPU_VAR	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public static final String CPU_VAR = "CPU";$/;"	f	class:InstallTracker
+ContactsUtil	src/main/java/com/bearstouch/android/core/ContactsUtil.java	/^public class ContactsUtil {$/;"	c
+Contributors	README.md	/^## Contributors$/;"	i
+CopyStream	src/main/java/com/bearstouch/android/core/image/Utils.java	/^    public static void CopyStream(InputStream is, OutputStream os) {$/;"	m	class:Utils
+DATA_MATRIX_TYPES	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final Collection<String> DATA_MATRIX_TYPES = Collections.singleton("DATA_MATRIX");$/;"	f	class:IntentIntegrator
+DEBUG	gen/com/bearstouch/android/core/BuildConfig.java	/^    public final static boolean DEBUG = true;$/;"	f	class:BuildConfig
+DEBUG	target/generated-sources/r/com/bearstouch/android/core/BuildConfig.java	/^  public static final boolean DEBUG = true;$/;"	f	class:BuildConfig
+DEFAULT_MESSAGE	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final String DEFAULT_MESSAGE =$/;"	f	class:IntentIntegrator
+DEFAULT_NO	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final String DEFAULT_NO = "No";$/;"	f	class:IntentIntegrator
+DEFAULT_SIZE	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    public static final int DEFAULT_SIZE = 16;$/;"	f	class:GenericPool
+DEFAULT_TITLE	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final String DEFAULT_TITLE = "Install Barcode Scanner?";$/;"	f	class:IntentIntegrator
+DEFAULT_YES	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final String DEFAULT_YES = "Yes";$/;"	f	class:IntentIntegrator
+DeviceUtil	src/main/java/com/bearstouch/android/core/DeviceUtil.java	/^public class DeviceUtil {$/;"	c
+DisplayImage	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    public void DisplayImage(String url, ImageView imageView) {$/;"	m	class:ImageLoader
+EMAIL_ADDRESS_PATTERN	src/main/java/com/bearstouch/android/core/data/FormValidator.java	/^    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile($/;"	f	class:FormValidator
+FileCache	src/main/java/com/bearstouch/android/core/image/FileCache.java	/^    public FileCache(Context context) {$/;"	m	class:FileCache
+FileCache	src/main/java/com/bearstouch/android/core/image/FileCache.java	/^public class FileCache {$/;"	c
+FileUtil	src/main/java/com/bearstouch/android/core/FileUtil.java	/^public class FileUtil {$/;"	c
+FontManager	src/main/java/com/bearstouch/android/core/ui/FontManager.java	/^    private FontManager(Context context) {$/;"	m	class:FontManager	file:
+FontManager	src/main/java/com/bearstouch/android/core/ui/FontManager.java	/^public class FontManager {$/;"	c
+FormValidator	src/main/java/com/bearstouch/android/core/data/FormValidator.java	/^public class FormValidator {$/;"	c
+GenericPool	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    public GenericPool() {$/;"	m	class:GenericPool
+GenericPool	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    public GenericPool(int startSize) {$/;"	m	class:GenericPool
+GenericPool	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    public GenericPool(int startSize, int maxSize) {$/;"	m	class:GenericPool
+GenericPool	src/main/java/com/bearstouch/android/core/GenericPool.java	/^public abstract class GenericPool<T> {$/;"	c
+GoogleAnaliticsTracker	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^    public GoogleAnaliticsTracker(Context context) {$/;"	m	class:GoogleAnaliticsTracker
+GoogleAnaliticsTracker	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^public class GoogleAnaliticsTracker {$/;"	c
+How to use it?	README.md	/^## How to use it?$/;"	i
+INSTALLER_VAR	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public static final String INSTALLER_VAR = "Installer";$/;"	f	class:InstallTracker
+INSTALLFILE	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public static final String INSTALLFILE = "install.info";$/;"	f	class:InstallTracker
+INSTALL_TIMESTAMP_KEY	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private static final String INSTALL_TIMESTAMP_KEY = "ITSK";$/;"	f	class:InstallTracker	file:
+INSTALL_TRACK_EVENT_TAG	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public static final String INSTALL_TRACK_EVENT_TAG = "Install Event";$/;"	f	class:InstallTracker
+ImageCacheManager	src/main/java/com/bearstouch/android/core/image/ImageCacheManager.java	/^    public ImageCacheManager(Context ctx) {$/;"	m	class:ImageCacheManager
+ImageCacheManager	src/main/java/com/bearstouch/android/core/image/ImageCacheManager.java	/^public class ImageCacheManager {$/;"	c
+ImageLoader	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    public ImageLoader(Context context) {$/;"	m	class:ImageLoader
+ImageLoader	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^public class ImageLoader {$/;"	c
+InstallTracker	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public InstallTracker(Context context, Logging logging, GoogleAnaliticsTracker gTracker) {$/;"	m	class:InstallTracker
+InstallTracker	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^public class InstallTracker {$/;"	c
+IntentIntegrator	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public IntentIntegrator(Activity activity) {$/;"	m	class:IntentIntegrator
+IntentIntegrator	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^public class IntentIntegrator {$/;"	c
+IntentResult	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    IntentResult() {$/;"	m	class:IntentResult
+IntentResult	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    IntentResult(String contents, String formatName, byte[] rawBytes,$/;"	m	class:IntentResult
+IntentResult	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^public final class IntentResult {$/;"	c
+LOGTAG	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private static final String LOGTAG = "InstallTracker";$/;"	f	class:InstallTracker	file:
+LOGTAG_	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    public static String LOGTAG_ = "BearDBHelper";$/;"	f	class:AssetDBHelper
+LOGTAG_	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    public static String LOGTAG_ = "BearDBHelper";$/;"	f	class:BearDBHelper
+Logging	src/main/java/com/bearstouch/android/core/Logging.java	/^    Logging(Context context) {$/;"	m	class:Logging
+Logging	src/main/java/com/bearstouch/android/core/Logging.java	/^public class Logging {$/;"	c
+MIGRATIONS_DIRECTORY	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    public static String MIGRATIONS_DIRECTORY = "db_migrations";$/;"	f	class:BearDBHelper
+Manifest	target/generated-sources/r/com/bearstouch/android/core/Manifest.java	/^public final class Manifest {$/;"	c
+MemoryCache	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    public MemoryCache() {$/;"	m	class:MemoryCache
+MemoryCache	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^public class MemoryCache {$/;"	c
+ONE_D_CODE_TYPES	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final Collection<String> ONE_D_CODE_TYPES =$/;"	f	class:IntentIntegrator
+PHONE_VAR	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public static final String PHONE_VAR = "Device";$/;"	f	class:InstallTracker
+PRODUCT_CODE_TYPES	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final Collection<String> PRODUCT_CODE_TYPES = list("UPC_A", "UPC_E", "EAN_8", "EAN_13", "RSS_14");$/;"	f	class:IntentIntegrator
+PhotoToLoad	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^        public PhotoToLoad(String u, ImageView i) {$/;"	m	class:ImageLoader.PhotoToLoad
+PhotoToLoad	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    private class PhotoToLoad {$/;"	c	class:ImageLoader
+PhotosLoader	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^        PhotosLoader(PhotoToLoad photoToLoad) {$/;"	m	class:ImageLoader.PhotosLoader
+PhotosLoader	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    class PhotosLoader implements Runnable {$/;"	c	class:ImageLoader
+Prerequisites	README.md	/^## Prerequisites$/;"	i
+QR_CODE_TYPES	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final Collection<String> QR_CODE_TYPES = Collections.singleton("QR_CODE");$/;"	f	class:IntentIntegrator
+R	gen/com/bearstouch/android/core/R.java	/^public final class R {$/;"	c
+R	target/generated-sources/r/com/bearstouch/android/core/R.java	/^public final class R {$/;"	c
+REQUEST_CODE	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final int REQUEST_CODE = 0x0000c0de; \/\/ Only use bottom 16 bits$/;"	f	class:IntentIntegrator
+SDK_VERSION_VAR	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public static final String SDK_VERSION_VAR = "SDK Version";$/;"	f	class:InstallTracker
+TAG	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    private static final String TAG = "MemoryCache";$/;"	f	class:MemoryCache	file:
+TAG	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private static final String TAG = IntentIntegrator.class.getSimpleName();$/;"	f	class:IntentIntegrator	file:
+TARGET_ALL_KNOWN	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final Collection<String> TARGET_ALL_KNOWN = list($/;"	f	class:IntentIntegrator
+TARGET_BARCODE_SCANNER_ONLY	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static final Collection<String> TARGET_BARCODE_SCANNER_ONLY = Collections.singleton(BS_PACKAGE);$/;"	f	class:IntentIntegrator
+TIMESTAMP_HASH_KEY	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private static final String TIMESTAMP_HASH_KEY = "UIDHK";$/;"	f	class:InstallTracker	file:
+UNIQUE_KEYID	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private static final String UNIQUE_KEYID = "PID";$/;"	f	class:InstallTracker	file:
+Using Google Analytics V2	README.md	/^# Using Google Analytics V2$/;"	h
+Utils	src/main/java/com/bearstouch/android/core/image/Utils.java	/^public class Utils {$/;"	c
+WebLinkView	gen/com/bearstouch/android/core/R.java	/^        public static final int[] WebLinkView = {$/;"	f	class:R.styleable
+WebLinkView	src/main/java/com/bearstouch/android/core/ui/WebLinkView.java	/^    public WebLinkView(Context context, AttributeSet attrs) {$/;"	m	class:WebLinkView
+WebLinkView	src/main/java/com/bearstouch/android/core/ui/WebLinkView.java	/^    public WebLinkView(Context context, AttributeSet attrs, int defStyle) {$/;"	m	class:WebLinkView
+WebLinkView	src/main/java/com/bearstouch/android/core/ui/WebLinkView.java	/^    public WebLinkView(Context context, String url) {$/;"	m	class:WebLinkView
+WebLinkView	src/main/java/com/bearstouch/android/core/ui/WebLinkView.java	/^public class WebLinkView extends View {$/;"	c
+WebLinkView_link	gen/com/bearstouch/android/core/R.java	/^        public static final int WebLinkView_link = 0;$/;"	f	class:R.styleable
+WebLinkView_name	gen/com/bearstouch/android/core/R.java	/^        public static final int WebLinkView_name = 1;$/;"	f	class:R.styleable
+action_bar	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar=0x7f020000;$/;"	f	class:R.drawable
+action_bar	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar=0x7f030000;$/;"	f	class:R.layout
+action_bar_background	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_background=0x7f020001;$/;"	f	class:R.drawable
+action_bar_background	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_background=0x7f040000;$/;"	f	class:R.style
+action_bar_divider	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_divider=0x7f020002;$/;"	f	class:R.drawable
+action_bar_item	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_item=0x7f030001;$/;"	f	class:R.layout
+action_bar_item_back	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_item_back=0x7f020003;$/;"	f	class:R.drawable
+action_bar_item_divider	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_item_divider=0x7f070008;$/;"	f	class:R.id
+action_bar_item_drawable	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_item_drawable=0x7f07000a;$/;"	f	class:R.id
+action_bar_item_drawable_layout	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_item_drawable_layout=0x7f070009;$/;"	f	class:R.id
+action_bar_logo_drawable	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_logo_drawable=0x7f010000;$/;"	f	class:R.attr
+action_bar_relative	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_relative=0x7f070000;$/;"	f	class:R.id
+action_bar_title	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_title=0x7f010001;$/;"	f	class:R.attr
+action_bar_title_layou	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_title_layou=0x7f070005;$/;"	f	class:R.id
+action_bar_title_style	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_title_style=0x7f040001;$/;"	f	class:R.style
+action_bar_title_text	gen/com/bearstouch/android/core/R.java	/^        public static int action_bar_title_text=0x7f070006;$/;"	f	class:R.id
+active_toolbar_active	gen/com/bearstouch/android/core/R.java	/^        public static int active_toolbar_active=0x7f020004;$/;"	f	class:R.drawable
+active_toolbar_inactive	gen/com/bearstouch/android/core/R.java	/^        public static int active_toolbar_inactive=0x7f020005;$/;"	f	class:R.drawable
+activity	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private final Activity activity;$/;"	f	class:IntentIntegrator	file:
+activity_background	gen/com/bearstouch/android/core/R.java	/^        public static int activity_background=0x7f050002;$/;"	f	class:R.color
+addFont	src/main/java/com/bearstouch/android/core/ui/FontManager.java	/^    public void addFont(String name, String fontFile) {$/;"	m	class:FontManager
+alertMessage	gen/com/bearstouch/android/core/R.java	/^        public static int alertMessage=0x7f07000d;$/;"	f	class:R.id
+android_ics	gen/com/bearstouch/android/core/R.java	/^        public static int android_ics=0x7f050000;$/;"	f	class:R.color
+app_name	gen/com/bearstouch/android/core/R.java	/^        public static int app_name=0x7f060000;$/;"	f	class:R.string
+apply	src/main/java/com/bearstouch/android/core/ui/FontManager.java	/^    public void apply(String name, TextView textView) {$/;"	m	class:FontManager
+attr	gen/com/bearstouch/android/core/R.java	/^    public static final class attr {$/;"	c	class:R
+bar_background	gen/com/bearstouch/android/core/R.java	/^        public static int bar_background=0x7f050003;$/;"	f	class:R.color
+bitmap	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^        Bitmap bitmap;$/;"	f	class:ImageLoader.BitmapDisplayer
+black	gen/com/bearstouch/android/core/R.java	/^        public static int black=0x7f05000f;$/;"	f	class:R.color
+blue_dark_droid	gen/com/bearstouch/android/core/R.java	/^        public static int blue_dark_droid=0x7f050009;$/;"	f	class:R.color
+blue_droid	gen/com/bearstouch/android/core/R.java	/^        public static int blue_droid=0x7f050008;$/;"	f	class:R.color
+buttonNo	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private String buttonNo;$/;"	f	class:IntentIntegrator	file:
+buttonYes	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private String buttonYes;$/;"	f	class:IntentIntegrator	file:
+cache	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    private Map<String, Bitmap> cache = Collections.synchronizedMap($/;"	f	class:MemoryCache	file:
+cacheDir	src/main/java/com/bearstouch/android/core/image/FileCache.java	/^    private File cacheDir;$/;"	f	class:FileCache	file:
+checkDataBase	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    private boolean checkDataBase() {$/;"	m	class:AssetDBHelper	file:
+checkEmail	src/main/java/com/bearstouch/android/core/data/FormValidator.java	/^    public static boolean checkEmail(String email) {$/;"	m	class:FormValidator
+checkSize	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    private void checkSize() {$/;"	m	class:MemoryCache	file:
+clear	src/main/java/com/bearstouch/android/core/image/FileCache.java	/^    public void clear() {$/;"	m	class:FileCache
+clear	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    public void clear() {$/;"	m	class:MemoryCache
+clearCache	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    public void clearCache() {$/;"	m	class:ImageLoader
+clearFileCache	src/main/java/com/bearstouch/android/core/image/ImageCacheManager.java	/^    public void clearFileCache() {$/;"	m	class:ImageCacheManager
+clearFileCache	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    public void clearFileCache() {$/;"	m	class:ImageLoader
+clearMemoryCache	src/main/java/com/bearstouch/android/core/image/ImageCacheManager.java	/^    public void clearMemoryCache() {$/;"	m	class:ImageCacheManager
+clearMemoryCache	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    public void clearMemoryCache() {$/;"	m	class:ImageLoader
+clearPool	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    public synchronized void clearPool() {$/;"	m	class:GenericPool
+close	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    public synchronized void close() {$/;"	m	class:AssetDBHelper
+closeDatabase	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    public void closeDatabase() {$/;"	m	class:BearDBHelper
+color	gen/com/bearstouch/android/core/R.java	/^    public static final class color {$/;"	c	class:R
+com.bearstouch.android.core	gen/com/bearstouch/android/core/BuildConfig.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	gen/com/bearstouch/android/core/R.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	src/main/java/com/bearstouch/android/core/ContactsUtil.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	src/main/java/com/bearstouch/android/core/DeviceUtil.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	src/main/java/com/bearstouch/android/core/FileUtil.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	src/main/java/com/bearstouch/android/core/GenericPool.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	src/main/java/com/bearstouch/android/core/Logging.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	target/generated-sources/r/com/bearstouch/android/core/BuildConfig.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	target/generated-sources/r/com/bearstouch/android/core/Manifest.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core	target/generated-sources/r/com/bearstouch/android/core/R.java	/^package com.bearstouch.android.core;$/;"	p
+com.bearstouch.android.core.data	src/main/java/com/bearstouch/android/core/data/FormValidator.java	/^package com.bearstouch.android.core.data;$/;"	p
+com.bearstouch.android.core.db	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^package com.bearstouch.android.core.db;$/;"	p
+com.bearstouch.android.core.db	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^package com.bearstouch.android.core.db;$/;"	p
+com.bearstouch.android.core.image	src/main/java/com/bearstouch/android/core/image/FileCache.java	/^package com.bearstouch.android.core.image;$/;"	p
+com.bearstouch.android.core.image	src/main/java/com/bearstouch/android/core/image/ImageCacheManager.java	/^package com.bearstouch.android.core.image;$/;"	p
+com.bearstouch.android.core.image	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^package com.bearstouch.android.core.image;$/;"	p
+com.bearstouch.android.core.image	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^package com.bearstouch.android.core.image;$/;"	p
+com.bearstouch.android.core.image	src/main/java/com/bearstouch/android/core/image/Utils.java	/^package com.bearstouch.android.core.image;$/;"	p
+com.bearstouch.android.core.qr	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^package com.bearstouch.android.core.qr;$/;"	p
+com.bearstouch.android.core.qr	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^package com.bearstouch.android.core.qr;$/;"	p
+com.bearstouch.android.core.ui	src/main/java/com/bearstouch/android/core/ui/FontManager.java	/^package com.bearstouch.android.core.ui;$/;"	p
+com.bearstouch.android.core.ui	src/main/java/com/bearstouch/android/core/ui/WebLinkView.java	/^package com.bearstouch.android.core.ui;$/;"	p
+contents	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    private final String contents;$/;"	f	class:IntentResult	file:
+context	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^    Context context;$/;"	f	class:GoogleAnaliticsTracker
+context	src/main/java/com/bearstouch/android/core/ui/FontManager.java	/^    private Context context;$/;"	f	class:FontManager	file:
+convertToScreenPixels	src/main/java/com/bearstouch/android/core/DeviceUtil.java	/^    public static double convertToScreenPixels(double dipPixels, double density) {$/;"	m	class:DeviceUtil
+convertToScreenPixels	src/main/java/com/bearstouch/android/core/DeviceUtil.java	/^    public static int convertToScreenPixels(int dipPixels, double density) {$/;"	m	class:DeviceUtil
+copyDataBase	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    private void copyDataBase() throws IOException {$/;"	m	class:AssetDBHelper	file:
+copyDataBaseInChunks	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    private void copyDataBaseInChunks(int numchunks) throws IOException {$/;"	m	class:AssetDBHelper	file:
+createAlert	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static Dialog createAlert(Context ctx, int layoutid, int textid, String alertTitle, String alertMessage) {$/;"	m	class:AndroidUtil
+createDataBase	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    public void createDataBase() throws IOException {$/;"	m	class:AssetDBHelper
+decodeFile	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    private Bitmap decodeFile(File f) {$/;"	m	class:ImageLoader	file:
+density	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    private static double density = -1;$/;"	f	class:AndroidUtil	file:
+density	src/main/java/com/bearstouch/android/core/DeviceUtil.java	/^    private static double density = -1;$/;"	f	class:DeviceUtil	file:
+displayImage	src/main/java/com/bearstouch/android/core/image/ImageCacheManager.java	/^    public void displayImage(String url, ImageView imageView) {$/;"	m	class:ImageCacheManager
+disptach	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^    public void disptach() {$/;"	m	class:GoogleAnaliticsTracker
+downgrade	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    private void downgrade(SQLiteDatabase db, int newVersion, int oldVersion) {$/;"	m	class:BearDBHelper	file:
+drawable	gen/com/bearstouch/android/core/R.java	/^    public static final class drawable {$/;"	c	class:R
+error	src/main/java/com/bearstouch/android/core/Logging.java	/^    public void error(String tag, String logMsg) {$/;"	m	class:Logging
+errorCorrectionLevel	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    private final String errorCorrectionLevel;$/;"	f	class:IntentResult	file:
+exception	src/main/java/com/bearstouch/android/core/Logging.java	/^    public void exception(String tag, String logMsg, Exception e) {$/;"	m	class:Logging
+executeSQL	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    public void executeSQL(String query) {$/;"	m	class:BearDBHelper
+executorService	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    ExecutorService executorService;$/;"	f	class:ImageLoader
+fileCache	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    FileCache fileCache;$/;"	f	class:ImageLoader
+findTargetAppPackage	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private String findTargetAppPackage(Intent intent) {$/;"	m	class:IntentIntegrator	file:
+font_description	gen/com/bearstouch/android/core/R.java	/^        public static int font_description=0x7f050007;$/;"	f	class:R.color
+font_title	gen/com/bearstouch/android/core/R.java	/^        public static int font_title=0x7f050006;$/;"	f	class:R.color
+fonts	src/main/java/com/bearstouch/android/core/ui/FontManager.java	/^    private HashMap<String, Typeface> fonts = new HashMap<String, Typeface>();$/;"	f	class:FontManager	file:
+formatName	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    private final String formatName;$/;"	f	class:IntentResult	file:
+generic_alert_dialog	gen/com/bearstouch/android/core/R.java	/^        public static int generic_alert_dialog=0x7f030002;$/;"	f	class:R.layout
+get	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    public synchronized T get() {$/;"	m	class:GenericPool
+get	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    public Bitmap get(String id) {$/;"	m	class:MemoryCache
+getBitmap	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    private Bitmap getBitmap(String url) {$/;"	m	class:ImageLoader	file:
+getButtonNo	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public String getButtonNo() {$/;"	m	class:IntentIntegrator
+getButtonYes	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public String getButtonYes() {$/;"	m	class:IntentIntegrator
+getContactPhoto	src/main/java/com/bearstouch/android/core/ContactsUtil.java	/^    public static Bitmap getContactPhoto(Context ctx, int id) {$/;"	m	class:ContactsUtil
+getContents	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    public String getContents() {$/;"	m	class:IntentResult
+getDensity	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static double getDensity(Activity activity) {$/;"	m	class:AndroidUtil
+getDensity	src/main/java/com/bearstouch/android/core/DeviceUtil.java	/^    public static double getDensity(Activity activity) {$/;"	m	class:DeviceUtil
+getDisplayMetrics	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static DisplayMetrics getDisplayMetrics(Activity activity) {$/;"	m	class:AndroidUtil
+getDysplayNamefromId	src/main/java/com/bearstouch/android/core/ContactsUtil.java	/^    public static String getDysplayNamefromId(Context ctx, long contactId) {$/;"	m	class:ContactsUtil
+getErrorCorrectionLevel	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    public String getErrorCorrectionLevel() {$/;"	m	class:IntentResult
+getFile	src/main/java/com/bearstouch/android/core/image/FileCache.java	/^    public File getFile(String url) {$/;"	m	class:FileCache
+getFonts	src/main/java/com/bearstouch/android/core/ui/FontManager.java	/^    public Set<String> getFonts() {$/;"	m	class:FontManager
+getFormatName	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    public String getFormatName() {$/;"	m	class:IntentResult
+getIDFromFile	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private String getIDFromFile(Context ctx) {$/;"	m	class:InstallTracker	file:
+getInstallTimeStamp	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public long getInstallTimeStamp() {$/;"	m	class:InstallTracker
+getInstance	src/main/java/com/bearstouch/android/core/ui/FontManager.java	/^    public static FontManager getInstance(Context context) {$/;"	m	class:FontManager
+getInternalCachePath	src/main/java/com/bearstouch/android/core/FileUtil.java	/^    public static String getInternalCachePath(Context context) {$/;"	m	class:FileUtil
+getMessage	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public String getMessage() {$/;"	m	class:IntentIntegrator
+getOrderedContactsListIds	src/main/java/com/bearstouch/android/core/ContactsUtil.java	/^    public static ArrayList<Integer> getOrderedContactsListIds(Context ctx) {$/;"	m	class:ContactsUtil
+getOrderedContactsWithPhoneList	src/main/java/com/bearstouch/android/core/ContactsUtil.java	/^    public static MatrixCursor getOrderedContactsWithPhoneList(Context ctx) {$/;"	m	class:ContactsUtil
+getOrientation	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    public Integer getOrientation() {$/;"	m	class:IntentResult
+getPreferenceFile	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    protected SharedPreferences getPreferenceFile() {$/;"	m	class:InstallTracker
+getRawBytes	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    public byte[] getRawBytes() {$/;"	m	class:IntentResult
+getSDCardCachePath	src/main/java/com/bearstouch/android/core/FileUtil.java	/^    public static String getSDCardCachePath(Context context) {$/;"	m	class:FileUtil
+getSize	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    public int getSize() {$/;"	m	class:GenericPool
+getSizeInBytes	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    long getSizeInBytes(Bitmap bitmap) {$/;"	m	class:MemoryCache
+getTargetApplications	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public Collection<String> getTargetApplications() {$/;"	m	class:IntentIntegrator
+getTitle	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public String getTitle() {$/;"	m	class:IntentIntegrator
+getUniqueID	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public String getUniqueID() {$/;"	m	class:InstallTracker
+green_bearstouch	gen/com/bearstouch/android/core/R.java	/^        public static int green_bearstouch=0x7f050001;$/;"	f	class:R.color
+green_dark_droid	gen/com/bearstouch/android/core/R.java	/^        public static int green_dark_droid=0x7f05000b;$/;"	f	class:R.color
+green_droid	gen/com/bearstouch/android/core/R.java	/^        public static int green_droid=0x7f05000a;$/;"	f	class:R.color
+home_drawable_layout	gen/com/bearstouch/android/core/R.java	/^        public static int home_drawable_layout=0x7f070002;$/;"	f	class:R.id
+home_stack	gen/com/bearstouch/android/core/R.java	/^        public static int home_stack=0x7f030003;$/;"	f	class:R.layout
+home_stack_item	gen/com/bearstouch/android/core/R.java	/^        public static int home_stack_item=0x7f030004;$/;"	f	class:R.layout
+http_url	src/main/java/com/bearstouch/android/core/ui/WebLinkView.java	/^    String http_url = "";$/;"	f	class:WebLinkView
+ic_dialog_alert	gen/com/bearstouch/android/core/R.java	/^        public static int ic_dialog_alert=0x7f020006;$/;"	f	class:R.drawable
+ic_home_logo	gen/com/bearstouch/android/core/R.java	/^        public static int ic_home_logo=0x7f020007;$/;"	f	class:R.drawable
+ic_list_selector	gen/com/bearstouch/android/core/R.java	/^        public static int ic_list_selector=0x7f020008;$/;"	f	class:R.drawable
+icon_color	gen/com/bearstouch/android/core/R.java	/^        public static int icon_color=0x7f050004;$/;"	f	class:R.color
+id	gen/com/bearstouch/android/core/R.java	/^    public static final class id {$/;"	c	class:R
+imageView	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^        public ImageView imageView;$/;"	f	class:ImageLoader.PhotoToLoad
+imageView1	gen/com/bearstouch/android/core/R.java	/^        public static int imageView1=0x7f07000c;$/;"	f	class:R.id
+imageViewReused	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    boolean imageViewReused(PhotoToLoad photoToLoad) {$/;"	m	class:ImageLoader
+imageViews	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    private Map<ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());$/;"	f	class:ImageLoader	file:
+imgLoader	src/main/java/com/bearstouch/android/core/image/ImageCacheManager.java	/^    private final ImageLoader imgLoader;$/;"	f	class:ImageCacheManager	file:
+info	src/main/java/com/bearstouch/android/core/Logging.java	/^    public void info(String tag, String logMsg) {$/;"	m	class:Logging
+init	src/main/java/com/bearstouch/android/core/ui/WebLinkView.java	/^    private void init(AttributeSet attrs) {$/;"	m	class:WebLinkView	file:
+initiateScan	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public AlertDialog initiateScan() {$/;"	m	class:IntentIntegrator
+initiateScan	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public AlertDialog initiateScan(Collection<String> desiredBarcodeFormats) {$/;"	m	class:IntentIntegrator
+isDebugVersion	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static boolean isDebugVersion(Context ctx) {$/;"	m	class:AndroidUtil
+isDebuggable	src/main/java/com/bearstouch/android/core/Logging.java	/^    public boolean isDebuggable() {$/;"	m	class:Logging
+isEmulator	src/main/java/com/bearstouch/android/core/DeviceUtil.java	/^    public static boolean isEmulator() {$/;"	m	class:DeviceUtil
+isExternalStorageAvailableforReading	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static boolean isExternalStorageAvailableforReading() {$/;"	m	class:AndroidUtil
+isExternalStorageAvailableforWriting	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static boolean isExternalStorageAvailableforWriting() {$/;"	m	class:AndroidUtil
+isFirstTimeRunning	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public boolean isFirstTimeRunning() {$/;"	m	class:InstallTracker
+isInstallValid	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public boolean isInstallValid() {$/;"	m	class:InstallTracker
+isRunningOnEmulator	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static boolean isRunningOnEmulator(Context ctx) {$/;"	m	class:AndroidUtil
+item_drawable	gen/com/bearstouch/android/core/R.java	/^        public static int item_drawable=0x7f07000e;$/;"	f	class:R.id
+item_text	gen/com/bearstouch/android/core/R.java	/^        public static int item_text=0x7f07000f;$/;"	f	class:R.id
+itemsLayout	gen/com/bearstouch/android/core/R.java	/^        public static int itemsLayout=0x7f070007;$/;"	f	class:R.id
+layout	gen/com/bearstouch/android/core/R.java	/^    public static final class layout {$/;"	c	class:R
+layout_ct_dialog	gen/com/bearstouch/android/core/R.java	/^        public static int layout_ct_dialog=0x7f07000b;$/;"	f	class:R.id
+lightcyan	gen/com/bearstouch/android/core/R.java	/^        public static int lightcyan=0x7f05000e;$/;"	f	class:R.color
+limit	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    private long limit = 1000000;\/\/max memory in bytes$/;"	f	class:MemoryCache	file:
+line_separator	gen/com/bearstouch/android/core/R.java	/^        public static int line_separator=0x7f050005;$/;"	f	class:R.color
+linearLayout1	gen/com/bearstouch/android/core/R.java	/^        public static int linearLayout1=0x7f070001;$/;"	f	class:R.id
+link	gen/com/bearstouch/android/core/R.java	/^        public static int link=0x7f010002;$/;"	f	class:R.attr
+list	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private static Collection<String> list(String... values) {$/;"	m	class:IntentIntegrator	file:
+logTag	src/main/java/com/bearstouch/android/core/Logging.java	/^    String logTag;$/;"	f	class:Logging
+logoDrawable	gen/com/bearstouch/android/core/R.java	/^        public static int logoDrawable=0x7f070003;$/;"	f	class:R.id
+mAssetManager	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    AssetManager mAssetManager;$/;"	f	class:AssetDBHelper
+mAssetManager	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    AssetManager mAssetManager;$/;"	f	class:BearDBHelper
+mContext	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    Context mContext;$/;"	f	class:InstallTracker
+mContext	src/main/java/com/bearstouch/android/core/Logging.java	/^    Context mContext;$/;"	f	class:Logging
+mContext	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    Context mContext;$/;"	f	class:AssetDBHelper
+mContext	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    Context mContext;$/;"	f	class:BearDBHelper
+mDBPath	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    String mDBPath;$/;"	f	class:AssetDBHelper
+mDatabase	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    SQLiteDatabase mDatabase = null;$/;"	f	class:AssetDBHelper
+mDatabase	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    SQLiteDatabase mDatabase = null;$/;"	f	class:BearDBHelper
+mDatabaseName	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    String mDatabaseName;$/;"	f	class:AssetDBHelper
+mDatabaseName	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    String mDatabaseName;$/;"	f	class:BearDBHelper
+mDatabaseVersion	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    int mDatabaseVersion;$/;"	f	class:AssetDBHelper
+mDatabaseVersion	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    int mDatabaseVersion;$/;"	f	class:BearDBHelper
+mFreeItems	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    private final Stack<T> mFreeItems = new Stack<T>();$/;"	f	class:GenericPool	file:
+mGInstance	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^    GoogleAnalytics mGInstance;$/;"	f	class:GoogleAnaliticsTracker
+mGTracker	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^    private Tracker mGTracker;$/;"	f	class:GoogleAnaliticsTracker	file:
+mGTracker	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    GoogleAnaliticsTracker mGTracker;$/;"	f	class:InstallTracker
+mInstallTimeStamp	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private long mInstallTimeStamp = 0;$/;"	f	class:InstallTracker	file:
+mInstance	src/main/java/com/bearstouch/android/core/ui/FontManager.java	/^    private static FontManager mInstance = null;$/;"	f	class:FontManager	file:
+mIsAValidInstall	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private boolean mIsAValidInstall = false;$/;"	f	class:InstallTracker	file:
+mIsDebuggable	src/main/java/com/bearstouch/android/core/Logging.java	/^    boolean mIsDebuggable;$/;"	f	class:Logging
+mIsFirstTimeRunnig	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    boolean mIsFirstTimeRunnig;$/;"	f	class:InstallTracker
+mLog	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    Logging mLog;$/;"	f	class:AssetDBHelper
+mLog	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    Logging mLog;$/;"	f	class:BearDBHelper
+mLogging	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    Logging mLogging;$/;"	f	class:InstallTracker
+mMaxSize	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    private int mMaxSize;$/;"	f	class:GenericPool	file:
+mPackageName	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    String mPackageName;$/;"	f	class:AssetDBHelper
+mTimeStampHash	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private String mTimeStampHash = null;$/;"	f	class:InstallTracker	file:
+mUniqueID	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private String mUniqueID = null;$/;"	f	class:InstallTracker	file:
+mUnrecycledCount	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    private int mUnrecycledCount;$/;"	f	class:GenericPool	file:
+main	gen/com/bearstouch/android/core/R.java	/^        public static int main=0x7f030005;$/;"	f	class:R.layout
+memoryCache	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    MemoryCache memoryCache = new MemoryCache();$/;"	f	class:ImageLoader
+message	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private String message;$/;"	f	class:IntentIntegrator	file:
+name	gen/com/bearstouch/android/core/R.java	/^        public static int name=0x7f010003;$/;"	f	class:R.attr
+name	src/main/java/com/bearstouch/android/core/ui/WebLinkView.java	/^    String name = "";$/;"	f	class:WebLinkView
+onAllocatePoolItem	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    protected abstract T onAllocatePoolItem();$/;"	m	class:GenericPool
+onCreate	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    public void onCreate(SQLiteDatabase arg0) {$/;"	m	class:AssetDBHelper
+onCreate	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    public void onCreate(SQLiteDatabase database) {$/;"	m	class:BearDBHelper
+onHandleRecycleItem	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    protected abstract void onHandleRecycleItem(T itemRecycled);$/;"	m	class:GenericPool
+onUpgrade	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {$/;"	m	class:AssetDBHelper
+onUpgrade	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {$/;"	m	class:BearDBHelper
+openDataBase	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    public boolean openDataBase() throws SQLException {$/;"	m	class:AssetDBHelper
+orientation	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    private final Integer orientation;$/;"	f	class:IntentResult	file:
+parseActivityResult	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public static IntentResult parseActivityResult(int requestCode, int resultCode, Intent intent) {$/;"	m	class:IntentIntegrator
+photoToLoad	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^        PhotoToLoad photoToLoad;$/;"	f	class:ImageLoader.BitmapDisplayer
+photoToLoad	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^        PhotoToLoad photoToLoad;$/;"	f	class:ImageLoader.PhotosLoader
+put	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    public void put(String id, Bitmap bitmap) {$/;"	m	class:MemoryCache
+query	src/main/java/com/bearstouch/android/core/db/AssetDBHelper.java	/^    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs,$/;"	m	class:AssetDBHelper
+query	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {$/;"	m	class:BearDBHelper
+query	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit) {$/;"	m	class:BearDBHelper
+queuePhoto	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^    private void queuePhoto(String url, ImageView imageView) {$/;"	m	class:ImageLoader	file:
+rawBytes	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    private final byte[] rawBytes;$/;"	f	class:IntentResult	file:
+readFileContentToString	src/main/java/com/bearstouch/android/core/FileUtil.java	/^    public static String readFileContentToString(InputStream fis) {$/;"	m	class:FileUtil
+recycle	src/main/java/com/bearstouch/android/core/GenericPool.java	/^    public synchronized void recycle(T item) {$/;"	m	class:GenericPool
+red_dark_droid	gen/com/bearstouch/android/core/R.java	/^        public static int red_dark_droid=0x7f05000d;$/;"	f	class:R.color
+red_droid	gen/com/bearstouch/android/core/R.java	/^        public static int red_droid=0x7f05000c;$/;"	f	class:R.color
+run	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^        public void run() {$/;"	m	class:ImageLoader.BitmapDisplayer
+run	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^        public void run() {$/;"	m	class:ImageLoader.PhotosLoader
+savePreferencesInExternal	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static boolean savePreferencesInExternal(Context ctx, SharedPreferences pref) {$/;"	m	class:AndroidUtil
+saveToPreferencesFile	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private void saveToPreferencesFile(SharedPreferences Settings, String deviceId, Long install_ts, String install_hash) {$/;"	m	class:InstallTracker	file:
+sendEmail	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static void sendEmail(Context ctx, String[] emailAddresses,$/;"	m	class:AndroidUtil
+setButtonNo	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void setButtonNo(String buttonNo) {$/;"	m	class:IntentIntegrator
+setButtonNoByID	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void setButtonNoByID(int buttonNoID) {$/;"	m	class:IntentIntegrator
+setButtonYes	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void setButtonYes(String buttonYes) {$/;"	m	class:IntentIntegrator
+setButtonYesByID	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void setButtonYesByID(int buttonYesID) {$/;"	m	class:IntentIntegrator
+setLimit	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    public void setLimit(long new_limit) {$/;"	m	class:MemoryCache
+setMessage	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void setMessage(String message) {$/;"	m	class:IntentIntegrator
+setMessageByID	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void setMessageByID(int messageID) {$/;"	m	class:IntentIntegrator
+setSingleTargetApplication	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void setSingleTargetApplication(String targetApplication) {$/;"	m	class:IntentIntegrator
+setTargetApplications	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void setTargetApplications(Collection<String> targetApplications) {$/;"	m	class:IntentIntegrator
+setTitle	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void setTitle(String title) {$/;"	m	class:IntentIntegrator
+setTitleByID	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void setTitleByID(int titleID) {$/;"	m	class:IntentIntegrator
+setmInstallTimeStamp	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    protected void setmInstallTimeStamp(long mInstallTimeStamp) {$/;"	m	class:InstallTracker
+setmIsAValidInstall	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    protected void setmIsAValidInstall(boolean mIsAValidInstall) {$/;"	m	class:InstallTracker
+setmIsFirstTimeRunnig	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    protected void setmIsFirstTimeRunnig(boolean mIsFirstTimeRunnig) {$/;"	m	class:InstallTracker
+setmTimeStampHash	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    protected void setmTimeStampHash(String mTimeStampHash) {$/;"	m	class:InstallTracker
+setmUniqueID	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    protected void setmUniqueID(String mUniqueID) {$/;"	m	class:InstallTracker
+shareText	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    public void shareText(CharSequence text) {$/;"	m	class:IntentIntegrator
+showDownloadDialog	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private AlertDialog showDownloadDialog() {$/;"	m	class:IntentIntegrator	file:
+showToast	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static void showToast(Context ctx, String message) {$/;"	m	class:AndroidUtil
+showToast	src/main/java/com/bearstouch/android/core/AndroidUtil.java	/^    public static void showToast(Context ctx, int id) {$/;"	m	class:AndroidUtil
+size	src/main/java/com/bearstouch/android/core/image/MemoryCache.java	/^    private long size = 0;\/\/current allocated size$/;"	f	class:MemoryCache	file:
+startActivityForResult	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    protected void startActivityForResult(Intent intent, int code) {$/;"	m	class:IntentIntegrator
+string	gen/com/bearstouch/android/core/R.java	/^    public static final class string {$/;"	c	class:R
+style	gen/com/bearstouch/android/core/R.java	/^    public static final class style {$/;"	c	class:R
+styleable	gen/com/bearstouch/android/core/R.java	/^    public static final class styleable {$/;"	c	class:R
+targetApplications	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private Collection<String> targetApplications;$/;"	f	class:IntentIntegrator	file:
+title	src/main/java/com/bearstouch/android/core/qr/IntentIntegrator.java	/^    private String title;$/;"	f	class:IntentIntegrator	file:
+titleDividerLayout	gen/com/bearstouch/android/core/R.java	/^        public static int titleDividerLayout=0x7f070004;$/;"	f	class:R.id
+toString	src/main/java/com/bearstouch/android/core/qr/IntentResult.java	/^    public String toString() {$/;"	m	class:IntentResult
+trackEvent	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^    public void trackEvent(String category, String action, String label, long value) {$/;"	m	class:GoogleAnaliticsTracker
+trackExeception	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^    public void trackExeception(String description, Exception e) {$/;"	m	class:GoogleAnaliticsTracker
+trackInstall	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    public void trackInstall(Activity activity, String app_name,$/;"	m	class:InstallTracker
+trackSocial	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^    public void trackSocial(String network, String action, String target) {$/;"	m	class:GoogleAnaliticsTracker
+trackTiming	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^    public void trackTiming(String category, long interval, String name, String label) {$/;"	m	class:GoogleAnaliticsTracker
+trackView	src/main/java/com/bearstouch/android/core/GoogleAnaliticsTracker.java	/^    public void trackView(String name) {$/;"	m	class:GoogleAnaliticsTracker
+upgrade	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    private void upgrade(SQLiteDatabase db, int newVersion, int oldVersion) {$/;"	m	class:BearDBHelper	file:
+upgradeToVersion	src/main/java/com/bearstouch/android/core/db/BearDBHelper.java	/^    private void upgradeToVersion(SQLiteDatabase db, int newVersion, int oldVersion) {$/;"	m	class:BearDBHelper	file:
+url	src/main/java/com/bearstouch/android/core/image/ImageLoader.java	/^        public String url;$/;"	f	class:ImageLoader.PhotoToLoad
+verifyInstallID	src/main/java/com/bearstouch/android/core/InstallTracker.java	/^    private boolean verifyInstallID() {$/;"	m	class:InstallTracker	file:
+warning	src/main/java/com/bearstouch/android/core/Logging.java	/^    public void warning(String tag, String logMsg) {$/;"	m	class:Logging

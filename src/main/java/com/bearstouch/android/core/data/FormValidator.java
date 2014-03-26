@@ -18,12 +18,6 @@
  */
 package com.bearstouch.android.core.data;
 
-/**
- *
- * @author Helder Vasconcelos heldervasc@bearstouch.com
- *
- */
-
 import java.util.regex.Pattern;
 
 public class FormValidator {

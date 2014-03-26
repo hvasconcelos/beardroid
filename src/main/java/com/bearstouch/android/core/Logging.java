@@ -16,52 +16,87 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.bearstouch.android.core;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
+public class Logging
+{
 
-@Singleton
-public class Logging {
-    Context mContext;
     boolean mIsDebuggable;
     String logTag;
+    private static Logging logging = null;
 
-    @Inject
-    Logging(Context context) {
-        this.mContext = context;
+    private Logging(Context context)
+    {
         this.mIsDebuggable = AndroidUtil.isDebugVersion(context);
         this.logTag = context.getApplicationInfo().name;
     }
 
-    public void exception(String tag, String logMsg, Exception e) {
-        if (mIsDebuggable) {
-            Log.e(logTag + " - " + tag, logMsg, e);
+    private static void initInstance(Context ctx)
+    {
+        if (logging == null)
+        {
+            logging = new Logging(ctx);
         }
     }
 
-    public void error(String tag, String logMsg) {
-        if (mIsDebuggable) {
-            Log.e(logTag + " - " + tag, logMsg);
+    public static void exception(Context ctx, String logMsg, Exception e)
+    {
+        exception(ctx, "Geral", logMsg, e);
+    }
+
+    public static void exception(Context ctx, String tag, String logMsg,
+            Exception e)
+    {
+        initInstance(ctx);
+        if (logging.mIsDebuggable)
+        {
+            Log.e(logging.logTag + " | " + tag, logMsg, e);
         }
     }
 
-    public void info(String tag, String logMsg) {
-        if (mIsDebuggable) {
-            Log.i(logTag + " - " + tag, logMsg);
+    public static void error(Context ctx, String logMsg)
+    {
+        error(ctx, "Geral", logMsg);
+    }
+
+    public static void error(Context ctx, String tag, String logMsg)
+    {
+        initInstance(ctx);
+        if (logging.mIsDebuggable)
+        {
+            Log.e(logging.logTag + " | " + tag, logMsg);
         }
     }
 
-    public boolean isDebuggable() {
-        return mIsDebuggable;
+    public static void info(Context ctx, String logMsg)
+    {
+        info(ctx, "Geral", logMsg);
     }
 
-    public void warning(String tag, String logMsg) {
-        if (mIsDebuggable) {
-            Log.w(logTag + " - " + tag, logMsg);
+    public static void info(Context ctx, String tag, String logMsg)
+    {
+        initInstance(ctx);
+        if (logging.mIsDebuggable)
+        {
+            Log.i(logging.logTag + " | " + tag, logMsg);
+        }
+    }
+
+    public static void warning(Context ctx, String logMsg)
+    {
+        warning(ctx, "Geral", logMsg);
+    }
+
+    public static void warning(Context ctx, String tag, String logMsg)
+    {
+        initInstance(ctx);
+        if (logging.mIsDebuggable)
+        {
+            Log.w(logging.logTag + " | " + tag, logMsg);
         }
     }
 }

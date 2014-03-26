@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.bearstouch.android.core.db;
 
 import android.content.Context;
@@ -33,10 +34,11 @@ import java.util.Arrays;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-public class AssetDBHelper extends SQLiteOpenHelper {
+public class AssetDBHelper extends SQLiteOpenHelper
+{
 
     public static String LOGTAG_ = "BearDBHelper";
-    
+
     private Context mContext;
     private String mDatabaseName;
     private int mDatabaseVersion;
@@ -45,12 +47,10 @@ public class AssetDBHelper extends SQLiteOpenHelper {
     private SQLiteDatabase mDatabase = null;
     private String mPackageName;
     private String mDBPath;
-  
-    @Inject 
-    public AssetDBHelper( @Named("packageName") String package_name,
-                          @Named("databaseName") String database_name,
-                          @Named("databaseVersion") int database_version, 
-                          Context context, Logging log) {
+
+    public AssetDBHelper(String package_name, String database_name,
+            int database_version, Context context, Logging log)
+    {
         super(context, database_name, null, database_version);
 
         mContext = context;
@@ -59,64 +59,81 @@ public class AssetDBHelper extends SQLiteOpenHelper {
         mLog = log;
         mAssetManager = mContext.getAssets();
 
-        mLog.info(LOGTAG_, " Database helper for Database Name=" + mDatabaseName + " and version "
-                + mDatabaseVersion);
+        mLog.info(mContext, " Database helper for Database Name="
+                + mDatabaseName + " and version " + mDatabaseVersion);
 
         mPackageName = package_name;
         mDBPath = "/data/data/" + mPackageName + "/databases/";
 
-        try {
+        try
+        {
             createDataBase();
-        } catch (IOException e) {
-            mLog.error(LOGTAG_, " Failed Creating Database to " + mDBPath + mDBPath);
+        } catch (IOException e)
+        {
+            mLog.error(mContext, " Failed Creating Database to " + mDBPath
+                    + mDBPath);
             e.printStackTrace();
         }
         openDataBase();
     }
 
-    public void createDataBase() throws IOException {
+    public void createDataBase() throws IOException
+    {
         boolean mDataBaseExist = checkDataBase();
-        if (!mDataBaseExist) {
+        if (!mDataBaseExist)
+        {
             this.getReadableDatabase();
-            try {
+            try
+            {
                 copyDataBase();
-            } catch (IOException mIOException) {
+            } catch (IOException mIOException)
+            {
                 throw new Error("Error Copying DataBase");
             }
         }
     }
 
-    public boolean openDataBase() throws SQLException {
+    public boolean openDataBase() throws SQLException
+    {
         String mPath = mDBPath + mDatabaseName;
-        mDatabase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+        mDatabase = SQLiteDatabase.openDatabase(mPath, null,
+                SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         return mDatabase != null;
     }
 
-    private boolean checkDataBase() {
+    private boolean checkDataBase()
+    {
         SQLiteDatabase mCheckDataBase = null;
-        try {
+        try
+        {
             String myPath = mDBPath + mDBPath;
             mCheckDataBase = SQLiteDatabase.openDatabase(myPath, null,
                     SQLiteDatabase.NO_LOCALIZED_COLLATORS);
-        } catch (SQLiteException mSQLiteException) {
-            mLog.warning(LOGTAG_, "DatabaseNotFound " + mSQLiteException.toString());
+        } catch (SQLiteException mSQLiteException)
+        {
+            mLog.warning(mContext,
+                    "DatabaseNotFound " + mSQLiteException.toString());
         }
 
-        if (mCheckDataBase != null) {
+        if (mCheckDataBase != null)
+        {
             mCheckDataBase.close();
         }
         return mCheckDataBase != null;
     }
 
-    private void copyDataBase() throws IOException {
+    private void copyDataBase() throws IOException
+    {
 
-        mLog.info(LOGTAG_, " Copying Database [" + mDatabaseName + "] to [" + mDBPath + mDBPath + "]");
+        mLog.info(mContext, " Copying Database [" + mDatabaseName + "] to ["
+                + mDBPath + mDBPath + "]");
         InputStream mInput = mContext.getAssets().open(mDatabaseName);
         String outFileName = mDBPath + mDatabaseName;
         OutputStream mOutput = new FileOutputStream(outFileName);
         byte[] mBuffer = new byte[1024];
         int mLength;
-        while ((mLength = mInput.read(mBuffer)) > 0) {
+        while ((mLength = mInput.read(mBuffer)) > 0)
+        {
             mOutput.write(mBuffer, 0, mLength);
         }
         mOutput.flush();
@@ -124,7 +141,8 @@ public class AssetDBHelper extends SQLiteOpenHelper {
         mInput.close();
     }
 
-    private void copyDataBaseInChunks(int numchunks) throws IOException {
+    private void copyDataBaseInChunks(int numchunks) throws IOException
+    {
         AssetManager am = mContext.getAssets();
         File Path = mContext.getDir("Data", 0);
         File DBFile = new File(Path, mDatabaseName);
@@ -134,7 +152,8 @@ public class AssetDBHelper extends SQLiteOpenHelper {
         int i, r;
         String[] Files = am.list("");
         Arrays.sort(Files);
-        for (i = 1; i < numchunks; i++) {
+        for (i = 1; i < numchunks; i++)
+        {
             InputStream is = mContext.getAssets().open(mDatabaseName);
             while ((r = is.read(b)) != -1)
                 os.write(b, 0, r);
@@ -144,30 +163,39 @@ public class AssetDBHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase arg0) {
+    public void onCreate(SQLiteDatabase arg0)
+    {
 
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
+    public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2)
+    {
 
     }
 
-    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs,
-                        String groupBy, String having, String orderBy, int limit) {
+    public Cursor query(String table, String[] columns, String selection,
+            String[] selectionArgs, String groupBy, String having,
+            String orderBy, int limit)
+    {
 
-        return mDatabase.query(table, columns, selection, selectionArgs, groupBy, having, orderBy,
-                Integer.toString(limit));
+        return mDatabase.query(table, columns, selection, selectionArgs,
+                groupBy, having, orderBy, Integer.toString(limit));
     }
 
-    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs,
-                        String groupBy, String having, String orderBy) {
-        return mDatabase.query(table, columns, selection, selectionArgs, groupBy, having, orderBy);
+    public Cursor query(String table, String[] columns, String selection,
+            String[] selectionArgs, String groupBy, String having,
+            String orderBy)
+    {
+        return mDatabase.query(table, columns, selection, selectionArgs,
+                groupBy, having, orderBy);
     }
 
     @Override
-    public synchronized void close() {
-        if (mDatabase != null) mDatabase.close();
+    public synchronized void close()
+    {
+        if (mDatabase != null)
+            mDatabase.close();
         super.close();
     }
 }

@@ -16,17 +16,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bearstouch.android.core;
 
-/**
- *
- * @author H�lder Vasconcelos heldervasc@bearstouch.com
- *
- */
+package com.bearstouch.android.core;
 
 import java.util.Stack;
 
-public abstract class GenericPool<T> {
+public abstract class GenericPool<T>
+{
 
     public static final int DEFAULT_SIZE = 16;
     private final Stack<T> mFreeItems = new Stack<T>();
@@ -36,14 +32,16 @@ public abstract class GenericPool<T> {
     /**
      *
      */
-    public GenericPool() {
+    public GenericPool()
+    {
         this(DEFAULT_SIZE);
     }
 
     /**
      * @param startSize
      */
-    public GenericPool(int startSize) {
+    public GenericPool(int startSize)
+    {
         this(DEFAULT_SIZE, Integer.MAX_VALUE);
     }
 
@@ -51,8 +49,10 @@ public abstract class GenericPool<T> {
      * @param startSize
      * @param maxSize
      */
-    public GenericPool(int startSize, int maxSize) {
-        for (int i = 0; i < startSize; i++) {
+    public GenericPool(int startSize, int maxSize)
+    {
+        for (int i = 0; i < startSize; i++)
+        {
             mFreeItems.push(onAllocatePoolItem());
         }
         mUnrecycledCount = 0;
@@ -62,15 +62,19 @@ public abstract class GenericPool<T> {
     /**
      * @return
      */
-    public synchronized T get() {
+    public synchronized T get()
+    {
 
-        if (mFreeItems.size() > 0) {
+        if (mFreeItems.size() > 0)
+        {
             mUnrecycledCount++;
             return mFreeItems.pop();
-        } else if (getSize() < mMaxSize) {
+        } else if (getSize() < mMaxSize)
+        {
             mUnrecycledCount++;
             return onAllocatePoolItem();
-        } else {
+        } else
+        {
             System.out.println("Pool is depleted with MaxSize=" + getSize());
             return null;
         }
@@ -80,10 +84,11 @@ public abstract class GenericPool<T> {
     /**
      * @param item
      */
-    public synchronized void recycle(T item) {
-        if (item == null) {
-            throw new IllegalArgumentException(
-                    "Cannot free null item!");
+    public synchronized void recycle(T item)
+    {
+        if (item == null)
+        {
+            throw new IllegalArgumentException("Cannot free null item!");
         }
         mUnrecycledCount--;
         mFreeItems.push(item);
@@ -93,7 +98,8 @@ public abstract class GenericPool<T> {
     /**
      * @return
      */
-    public int getSize() {
+    public int getSize()
+    {
         return mUnrecycledCount + mFreeItems.size();
     }
 
@@ -110,7 +116,8 @@ public abstract class GenericPool<T> {
     /**
      *
      */
-    public synchronized void clearPool() {
+    public synchronized void clearPool()
+    {
         mFreeItems.clear();
     }
 }

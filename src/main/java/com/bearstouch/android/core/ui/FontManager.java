@@ -21,8 +21,8 @@
  * @author H�lder Vasconcelos heldervasc@bearstouch.com
  *
  */
-package com.bearstouch.android.core.ui;
 
+package com.bearstouch.android.core.ui;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -30,32 +30,40 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.Set;
 
-public class FontManager {
+public class FontManager
+{
 
     private HashMap<String, Typeface> fonts = new HashMap<String, Typeface>();
     private static FontManager mInstance = null;
     private Context context;
 
-    public static FontManager getInstance(Context context) {
-        if (mInstance == null) {
+    public static FontManager getInstance(Context context)
+    {
+        if (mInstance == null)
+        {
             mInstance = new FontManager(context);
         }
         return mInstance;
     }
 
-    private FontManager(Context context) {
+    private FontManager(Context context)
+    {
         this.context = context;
     }
 
-    public void addFont(String name, String fontFile) {
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), fontFile);
+    public void addFont(String name, String fontFile)
+    {
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(),
+                fontFile);
     }
 
-    public Set<String> getFonts() {
+    public Set<String> getFonts()
+    {
         return fonts.keySet();
     }
 
-    public void apply(String name, TextView textView) {
+    public void apply(String name, TextView textView)
+    {
         textView.setTypeface(fonts.get(name));
     }
 }

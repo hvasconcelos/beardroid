@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.bearstouch.android.core;
 
 import android.content.Context;
@@ -26,34 +27,35 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-/**
- * @author H�lder Vasconcelos heldervasc@bearstouch.com
- */
-
-public class FileUtil {
-
+public class FileUtil
+{
     /**
      * @param fis
      * @return
      */
-    public static String readFileContentToString(InputStream fis) {
+    public static String readFileContentToString(InputStream fis)
+    {
         StringBuffer stringBuffer = new StringBuffer();
 
-        if (fis == null) {
+        if (fis == null)
+        {
             return "";
         }
 
-        try {
-
+        try
+        {
             char[] buffer = new char[1024];
-            Reader reader = new BufferedReader(new InputStreamReader(fis, "UTF-8"));
+            Reader reader = new BufferedReader(new InputStreamReader(fis,
+                    "UTF-8"));
             int n;
-            while ((n = reader.read(buffer)) != -1) {
+            while ((n = reader.read(buffer)) != -1)
+            {
                 stringBuffer.append(buffer, 0, n);
             }
             fis.close();
 
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             e.printStackTrace();
         }
 
@@ -61,13 +63,15 @@ public class FileUtil {
 
     }
 
-
     /**
      * @param context
      * @return
      */
-    public static String getSDCardCachePath(Context context) {
-        String cacheDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/"
+    public static String getSDCardCachePath(Context context)
+    {
+        String cacheDir = Environment.getExternalStorageDirectory()
+                .getAbsolutePath()
+                + "/Android/data/"
                 + context.getPackageName() + "/cache";
         return cacheDir;
     }
@@ -76,7 +80,8 @@ public class FileUtil {
      * @param context
      * @return
      */
-    public static String getInternalCachePath(Context context) {
+    public static String getInternalCachePath(Context context)
+    {
         return context.getCacheDir().getAbsolutePath();
     }
 

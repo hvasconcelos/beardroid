@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013
+ * Copyright (C) 2014
  * Bearstouch Software : <mail@bearstouch.com>
  *
  * This file is part of Bearstouch Android Lib.
@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.bearstouch.android.core;
 
 import android.content.ContentResolver;
@@ -34,28 +35,26 @@ import android.provider.ContactsContract.Data;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-
-/**
- * @author H�lder Vasconcelos heldervasc@bearstouch.com
- */
-public class ContactsUtil {
-
-
+public class ContactsUtil
+{
     /**
      * @param ctx
      * @param id
      * @return
      */
-    public static Bitmap getContactPhoto(Context ctx, int id) {
+    public static Bitmap getContactPhoto(Context ctx, int id)
+    {
 
         Uri photoUri = ContentUris.withAppendedId(
                 ContactsContract.Contacts.CONTENT_URI, id);
         ContentResolver cr = ctx.getContentResolver();
 
-        if (photoUri != null) {
+        if (photoUri != null)
+        {
             InputStream input = ContactsContract.Contacts
                     .openContactPhotoInputStream(cr, photoUri);
-            if (input != null) {
+            if (input != null)
+            {
 
                 return BitmapFactory.decodeStream(input);
             }
@@ -70,14 +69,17 @@ public class ContactsUtil {
      * @param contactId
      * @return
      */
-    public static String getDysplayNamefromId(Context ctx, long contactId) {
+    public static String getDysplayNamefromId(Context ctx, long contactId)
+    {
 
         Uri cUri = ContentUris.withAppendedId(
                 ContactsContract.Contacts.CONTENT_URI, contactId);
 
-        Cursor cur = ctx.getContentResolver().query(cUri, null, null, null, null);
+        Cursor cur = ctx.getContentResolver().query(cUri, null, null, null,
+                null);
 
-        if (cur.moveToFirst()) {
+        if (cur.moveToFirst())
+        {
             int dysplayIndex = cur
                     .getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
             String dysplayName = cur.getString(dysplayIndex);
@@ -91,20 +93,23 @@ public class ContactsUtil {
      * @param ctx
      * @return
      */
-    public static ArrayList<Integer> getOrderedContactsListIds(Context ctx) {
+    public static ArrayList<Integer> getOrderedContactsListIds(Context ctx)
+    {
 
         ArrayList<Integer> contact_list = new ArrayList<Integer>();
         ContentResolver cr = ctx.getContentResolver();
 
         String[] columns = new String[]
-                {BaseColumns._ID, ContactsContract.Contacts.DISPLAY_NAME,
-                        ContactsContract.Contacts.HAS_PHONE_NUMBER};
+        { BaseColumns._ID, ContactsContract.Contacts.DISPLAY_NAME,
+                ContactsContract.Contacts.HAS_PHONE_NUMBER };
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI, columns,
                 ContactsContract.Contacts.HAS_PHONE_NUMBER + ">=1", null,
                 ContactsContract.Contacts.DISPLAY_NAME + " COLLATE NOCASE ASC");
 
-        if (cur.getCount() > 0) {
-            while (cur.moveToNext()) {
+        if (cur.getCount() > 0)
+        {
+            while (cur.moveToNext())
+            {
                 String id = cur.getString(cur.getColumnIndex(BaseColumns._ID));
                 contact_list.add(Integer.parseInt(id));
 
@@ -118,7 +123,8 @@ public class ContactsUtil {
      * @param ctx
      * @return
      */
-    public static MatrixCursor getOrderedContactsWithPhoneList(Context ctx) {
+    public static MatrixCursor getOrderedContactsWithPhoneList(Context ctx)
+    {
         MatrixCursor cursortoreturn;
         String[] columnnames = new String[5];
 
@@ -131,35 +137,45 @@ public class ContactsUtil {
 
         ContentResolver cr = ctx.getContentResolver();
         String[] columns = new String[]
-                {BaseColumns._ID, ContactsContract.Contacts.DISPLAY_NAME,
-                        ContactsContract.Contacts.HAS_PHONE_NUMBER};
-        Cursor people = cr.query(ContactsContract.Contacts.CONTENT_URI, columns,
-                ContactsContract.Contacts.HAS_PHONE_NUMBER + ">=1", null,
-                ContactsContract.Contacts.DISPLAY_NAME + " COLLATE NOCASE ASC");
+        { BaseColumns._ID, ContactsContract.Contacts.DISPLAY_NAME,
+                ContactsContract.Contacts.HAS_PHONE_NUMBER };
+        Cursor people = cr.query(ContactsContract.Contacts.CONTENT_URI,
+                columns, ContactsContract.Contacts.HAS_PHONE_NUMBER + ">=1",
+                null, ContactsContract.Contacts.DISPLAY_NAME
+                        + " COLLATE NOCASE ASC");
 
         people.moveToFirst();
 
+        while (people.moveToNext())
+        {
 
-        while (people.moveToNext()) {
+            String contactId = people.getString(people
+                    .getColumnIndex(ContactsContract.Contacts._ID));
+            String diplayName = people.getString(people
+                    .getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
 
-            String contactId =
-                    people.getString(people.getColumnIndex(ContactsContract.Contacts._ID));
-            String diplayName =
-                    people.getString(people.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-
-            Cursor phoneCursor = ctx.getContentResolver().query(Data.CONTENT_URI,
-                    new String[]{Data._ID, Phone.NUMBER, Phone.TYPE, Phone.LABEL},
-                    Data.CONTACT_ID + "=?" + " AND "
-                            + Data.MIMETYPE + "='" + Phone.CONTENT_ITEM_TYPE + "'",
-                    new String[]{String.valueOf(contactId)}, null);
+            Cursor phoneCursor = ctx.getContentResolver().query(
+                    Data.CONTENT_URI,
+                    new String[]
+                    { Data._ID, Phone.NUMBER, Phone.TYPE, Phone.LABEL },
+                    Data.CONTACT_ID + "=?" + " AND " + Data.MIMETYPE + "='"
+                            + Phone.CONTENT_ITEM_TYPE + "'", new String[]
+                    { String.valueOf(contactId) }, null);
 
             String Phonenumber = "";
-            while (phoneCursor.moveToNext()) {
-                String number = phoneCursor.getString(phoneCursor.getColumnIndex(Phone.NUMBER));
-                long dataid = phoneCursor.getLong(phoneCursor.getColumnIndex(Data._ID));
-                String type = Integer.toString(phoneCursor.getInt(phoneCursor.getColumnIndex(Phone.TYPE)));
-                if (Phonenumber.compareTo(number) != 0) {
-                    cursortoreturn.addRow(new String[]{Long.toString(dataid), contactId, diplayName, number, type});
+            while (phoneCursor.moveToNext())
+            {
+                String number = phoneCursor.getString(phoneCursor
+                        .getColumnIndex(Phone.NUMBER));
+                long dataid = phoneCursor.getLong(phoneCursor
+                        .getColumnIndex(Data._ID));
+                String type = Integer.toString(phoneCursor.getInt(phoneCursor
+                        .getColumnIndex(Phone.TYPE)));
+                if (Phonenumber.compareTo(number) != 0)
+                {
+                    cursortoreturn.addRow(new String[]
+                    { Long.toString(dataid), contactId, diplayName, number,
+                            type });
                     Phonenumber = number;
                 }
 
@@ -172,6 +188,5 @@ public class ContactsUtil {
         return cursortoreturn;
 
     }
-
 
 }

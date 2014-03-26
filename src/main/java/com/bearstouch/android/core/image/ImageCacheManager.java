@@ -21,34 +21,35 @@
  * @author H�lder Vasconcelos heldervasc@bearstouch.com
  *
  */
-package com.bearstouch.android.core.image;
 
+package com.bearstouch.android.core.image;
 
 import android.content.Context;
 import android.widget.ImageView;
 
-/**
- *
- */
-public class ImageCacheManager {
+public class ImageCacheManager
+{
 
     private final ImageLoader imgLoader;
 
-    public ImageCacheManager(Context ctx) {
+    public ImageCacheManager(Context ctx)
+    {
         this.imgLoader = new ImageLoader(ctx);
     }
 
     /**
      *
      */
-    public void clearMemoryCache() {
+    public void clearMemoryCache()
+    {
         imgLoader.clearMemoryCache();
     }
 
     /**
      *
      */
-    public void clearFileCache() {
+    public void clearFileCache()
+    {
         imgLoader.clearFileCache();
     }
 
@@ -56,7 +57,8 @@ public class ImageCacheManager {
      * @param url
      * @param imageView
      */
-    public void displayImage(String url, ImageView imageView) {
+    public void displayImage(String url, ImageView imageView)
+    {
         imgLoader.DisplayImage(url, imageView);
     }
 

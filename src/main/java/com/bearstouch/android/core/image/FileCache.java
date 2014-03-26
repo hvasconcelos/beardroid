@@ -16,26 +16,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.bearstouch.android.core.image;
 
 import android.content.Context;
 
 import java.io.File;
 
-/**
- *
- */
-public class FileCache {
+public class FileCache
+{
 
     private File cacheDir;
 
     /**
      * @param context
      */
-    public FileCache(Context context) {
-        //Find the dir to save cached images
-        if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-            cacheDir = new File(android.os.Environment.getExternalStorageDirectory(), "beardroid");
+    public FileCache(Context context)
+    {
+        // Find the dir to save cached images
+        if (android.os.Environment.getExternalStorageState().equals(
+                android.os.Environment.MEDIA_MOUNTED))
+            cacheDir = new File(
+                    android.os.Environment.getExternalStorageDirectory(),
+                    "beardroid");
         else
             cacheDir = context.getCacheDir();
         if (!cacheDir.exists())
@@ -46,11 +49,13 @@ public class FileCache {
      * @param url
      * @return
      */
-    public File getFile(String url) {
-        //I identify images by hashcode. Not a perfect solution, good for the demo.
+    public File getFile(String url)
+    {
+        // I identify images by hashcode. Not a perfect solution, good for the
+        // demo.
         String filename = String.valueOf(url.hashCode());
-        //Another possible solution (thanks to grantland)
-        //String filename = URLEncoder.encode(url);
+        // Another possible solution (thanks to grantland)
+        // String filename = URLEncoder.encode(url);
         File f = new File(cacheDir, filename);
         return f;
 
@@ -59,7 +64,8 @@ public class FileCache {
     /**
      *
      */
-    public void clear() {
+    public void clear()
+    {
         File[] files = cacheDir.listFiles();
         if (files == null)
             return;

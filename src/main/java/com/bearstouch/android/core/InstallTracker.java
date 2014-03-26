@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013
+ * Copyright (C) 2014
  * Bearstouch Software : <mail@bearstouch.com>
  *
  * This file is part of Bearstouch Android Lib.
@@ -16,8 +16,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bearstouch.android.core;
 
+package com.bearstouch.android.core;
 
 import android.app.Activity;
 import android.content.Context;
@@ -27,12 +27,9 @@ import android.util.DisplayMetrics;
 import org.apache.commons.codec.digest.DigestUtils;
 import java.util.UUID;
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
+public class InstallTracker
+{
 
-@Singleton
-public class InstallTracker {
-    
     private static final String UNIQUE_KEYID = "PID";
     private static final String INSTALL_TIMESTAMP_KEY = "ITSK";
     private static final String TIMESTAMP_HASH_KEY = "UIDHK";
@@ -45,7 +42,7 @@ public class InstallTracker {
     public static final String CPU_VAR = "CPU";
     public static final String INSTALLER_VAR = "Installer";
     public static final String INSTALL_TRACK_EVENT_TAG = "Install Event";
-      
+
     private Context mContext;
     private Logging mLogging;
     private GoogleAnaliticsTracker mGTracker;
@@ -54,102 +51,125 @@ public class InstallTracker {
     private String mTimeStampHash = null;
     private long mInstallTimeStamp = 0;
     private boolean mIsAValidInstall = false;
-    
-    @Inject 
-    public InstallTracker(Context context, Logging logging, GoogleAnaliticsTracker gTracker) {
+
+    public InstallTracker(Context context, Logging logging,
+            GoogleAnaliticsTracker gTracker)
+    {
         mContext = context;
         mLogging = logging;
         mGTracker = gTracker;
         mUniqueID = getIDFromFile(context);
     }
 
-    private String getIDFromFile(Context ctx) {
+    private String getIDFromFile(Context ctx)
+    {
         SharedPreferences mSettings = null;
         mSettings = getPreferenceFile();
-        mLogging.info(LOGTAG, "Verifying Install Info");
+        mLogging.info(ctx, "Verifying Install Info");
         mUniqueID = mSettings.getString(UNIQUE_KEYID, "");
-        if (mUniqueID.length() == 0) {
+        if (mUniqueID.length() == 0)
+        {
             // Application First run
-            mLogging.info(LOGTAG,
+            mLogging.info(ctx,
                     "First Time Running - Generating Unique Install ID");
             mIsFirstTimeRunnig = true;
             mIsAValidInstall = true;
             mUniqueID = UUID.randomUUID().toString();
             mInstallTimeStamp = System.currentTimeMillis();
-            mTimeStampHash=DigestUtils.shaHex(mUniqueID + Long.toString(mInstallTimeStamp));
-            saveToPreferencesFile(mSettings, mUniqueID, mInstallTimeStamp, mTimeStampHash);
-            mLogging.info(LOGTAG, "Install Info Saved with Success");
+            mTimeStampHash = DigestUtils.shaHex(mUniqueID
+                    + Long.toString(mInstallTimeStamp));
+            saveToPreferencesFile(ctx, mSettings, mUniqueID, mInstallTimeStamp,
+                    mTimeStampHash);
+            mLogging.info(ctx, "Install Info Saved with Success");
             return mUniqueID;
-        } else {
-            mLogging.info(LOGTAG, "Not First Time Running - Validating Install");
+        } else
+        {
+            mLogging.info(ctx, "Not First Time Running - Validating Install");
             mTimeStampHash = mSettings.getString(TIMESTAMP_HASH_KEY, "");
             mInstallTimeStamp = mSettings.getLong(INSTALL_TIMESTAMP_KEY, 0);
             mIsAValidInstall = verifyInstallID();
-            if (!mIsAValidInstall) {
-                mLogging.error(LOGTAG, "Invalid Install = " + mUniqueID);
-            } else {
-                mLogging.info(LOGTAG, "Unique ID Loaded = " + mUniqueID);
+            if (!mIsAValidInstall)
+            {
+                mLogging.error(ctx, "Invalid Install = " + mUniqueID);
+            } else
+            {
+                mLogging.info(ctx, "Unique ID Loaded = " + mUniqueID);
             }
             return mUniqueID;
         }
 
     }
 
-    private void saveToPreferencesFile(SharedPreferences Settings, String deviceId, 
-        Long install_ts, String install_hash) {
+    private void saveToPreferencesFile(Context ctx, SharedPreferences Settings,
+            String deviceId, Long install_ts, String install_hash)
+    {
 
         SharedPreferences.Editor editor = Settings.edit();
-        mLogging.info(LOGTAG, "Saving Unique Install ID = " + deviceId);
+        mLogging.info(ctx, "Saving Unique Install ID = " + deviceId);
         editor.putString(UNIQUE_KEYID, deviceId);
-        mLogging.info(LOGTAG, "Saving Timestamp = " + install_ts);
+        mLogging.info(ctx, "Saving Timestamp = " + install_ts);
         editor.putLong(INSTALL_TIMESTAMP_KEY, install_ts);
-        mLogging.info(LOGTAG, "Saving UUID hash = " + install_hash);
+        mLogging.info(ctx, "Saving UUID hash = " + install_hash);
         editor.putString(TIMESTAMP_HASH_KEY, install_hash);
         editor.commit();
     }
 
-    protected SharedPreferences getPreferenceFile() {
+    protected SharedPreferences getPreferenceFile()
+    {
         return mContext.getSharedPreferences(INSTALLFILE, 0);
     }
 
-    public boolean isFirstTimeRunning() {
+    public boolean isFirstTimeRunning()
+    {
         return mIsFirstTimeRunnig;
     }
 
-    public String getUniqueID() {
+    public String getUniqueID()
+    {
         return mUniqueID;
 
     }
 
-    public long getInstallTimeStamp() {
+    public long getInstallTimeStamp()
+    {
         return mInstallTimeStamp;
     }
 
-    private boolean verifyInstallID() {
+    private boolean verifyInstallID()
+    {
 
-        String digestTemp = DigestUtils.shaHex(mUniqueID + Long.toString(mInstallTimeStamp));
-        if (mTimeStampHash.compareTo(digestTemp) != 0) {
+        String digestTemp = DigestUtils.shaHex(mUniqueID
+                + Long.toString(mInstallTimeStamp));
+        if (mTimeStampHash.compareTo(digestTemp) != 0)
+        {
             return false;
-        } else {
+        } else
+        {
             return true;
         }
     }
 
-    public boolean isInstallValid() {
+    public boolean isInstallValid()
+    {
         return mIsAValidInstall;
     }
 
     public void trackInstall(Activity activity, String app_name,
-                             String app_version_name) {
+            String app_version_name)
+    {
 
-        mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, APP_NAME_VAR, app_name, 1);
+        mGTracker
+                .trackEvent(INSTALL_TRACK_EVENT_TAG, APP_NAME_VAR, app_name, 1);
         mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, APP_VERSION_VAR,
                 app_version_name, 1);
         mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, SDK_VERSION_VAR,
                 Integer.toString(Build.VERSION.SDK_INT), 1);
-        mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, PHONE_VAR,
-                Build.MANUFACTURER + " " + Build.PRODUCT + " " + Build.MODEL, 1);
-        mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, CPU_VAR, Build.CPU_ABI, 1);
+        mGTracker
+                .trackEvent(INSTALL_TRACK_EVENT_TAG, PHONE_VAR,
+                        Build.MANUFACTURER + " " + Build.PRODUCT + " "
+                                + Build.MODEL, 1);
+        mGTracker
+                .trackEvent(INSTALL_TRACK_EVENT_TAG, CPU_VAR, Build.CPU_ABI, 1);
         String installationSource = mContext.getPackageManager()
                 .getInstallerPackageName(mContext.getPackageName());
         mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, INSTALLER_VAR,
@@ -157,7 +177,8 @@ public class InstallTracker {
 
         // Ecra
         DisplayMetrics displayMetrics = AndroidUtil.getDisplayMetrics(activity);
-        if (displayMetrics != null) {
+        if (displayMetrics != null)
+        {
             String Resolution = displayMetrics.widthPixels + "x"
                     + displayMetrics.heightPixels;
             String dpis = displayMetrics.xdpi + "x" + displayMetrics.ydpi;
@@ -167,23 +188,28 @@ public class InstallTracker {
         }
     }
 
-    protected void setmIsFirstTimeRunnig(boolean mIsFirstTimeRunnig) {
+    protected void setmIsFirstTimeRunnig(boolean mIsFirstTimeRunnig)
+    {
         this.mIsFirstTimeRunnig = mIsFirstTimeRunnig;
     }
 
-    protected void setmUniqueID(String mUniqueID) {
+    protected void setmUniqueID(String mUniqueID)
+    {
         this.mUniqueID = mUniqueID;
     }
 
-    protected void setmTimeStampHash(String mTimeStampHash) {
+    protected void setmTimeStampHash(String mTimeStampHash)
+    {
         this.mTimeStampHash = mTimeStampHash;
     }
 
-    protected void setmInstallTimeStamp(long mInstallTimeStamp) {
+    protected void setmInstallTimeStamp(long mInstallTimeStamp)
+    {
         this.mInstallTimeStamp = mInstallTimeStamp;
     }
 
-    protected void setmIsAValidInstall(boolean mIsAValidInstall) {
+    protected void setmIsAValidInstall(boolean mIsAValidInstall)
+    {
         this.mIsAValidInstall = mIsAValidInstall;
     }
 }

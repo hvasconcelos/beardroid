@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.bearstouch.android.core.image;
 
 import android.app.Activity;
@@ -33,21 +34,20 @@ import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- *
- *
- */
-public class ImageLoader {
+public class ImageLoader
+{
 
     MemoryCache memoryCache = new MemoryCache();
     FileCache fileCache;
-    private Map<ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
+    private Map<ImageView, String> imageViews = Collections
+            .synchronizedMap(new WeakHashMap<ImageView, String>());
     ExecutorService executorService;
 
     /**
      * @param context
      */
-    public ImageLoader(Context context) {
+    public ImageLoader(Context context)
+    {
         fileCache = new FileCache(context);
         executorService = Executors.newFixedThreadPool(5);
     }
@@ -56,14 +56,16 @@ public class ImageLoader {
      * @param url
      * @param imageView
      */
-    public void DisplayImage(String url, ImageView imageView) {
+    public void DisplayImage(String url, ImageView imageView)
+    {
         imageViews.put(imageView, url);
         Bitmap bitmap = memoryCache.get(url);
         if (bitmap != null)
             imageView.setImageBitmap(bitmap);
-        else {
+        else
+        {
             queuePhoto(url, imageView);
-            //TOOD: Add Image Empty Slot
+            // TOOD: Add Image Empty Slot
             // imageView.setImageResource(R.drawable.ic_image_slot_empty);
         }
     }
@@ -72,7 +74,8 @@ public class ImageLoader {
      * @param url
      * @param imageView
      */
-    private void queuePhoto(String url, ImageView imageView) {
+    private void queuePhoto(String url, ImageView imageView)
+    {
         PhotoToLoad p = new PhotoToLoad(url, imageView);
         executorService.submit(new PhotosLoader(p));
     }
@@ -81,19 +84,22 @@ public class ImageLoader {
      * @param url
      * @return
      */
-    private Bitmap getBitmap(String url) {
+    private Bitmap getBitmap(String url)
+    {
         File f = fileCache.getFile(url);
 
-        //from SD cache
+        // from SD cache
         Bitmap b = decodeFile(f);
         if (b != null)
             return b;
 
-        //from web
-        try {
+        // from web
+        try
+        {
             Bitmap bitmap = null;
             URL imageUrl = new URL(url);
-            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+            HttpURLConnection conn = (HttpURLConnection) imageUrl
+                    .openConnection();
             conn.setConnectTimeout(30000);
             conn.setReadTimeout(30000);
             conn.setInstanceFollowRedirects(true);
@@ -103,66 +109,75 @@ public class ImageLoader {
             os.close();
             bitmap = decodeFile(f);
             return bitmap;
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
             ex.printStackTrace();
             return null;
         }
     }
 
-
     /**
      * Decodes image and scales it to reduce memory consumption
-     *
+     * 
      * @param f
      * @return
      */
-    private Bitmap decodeFile(File f) {
-        try {
-            //decode image size
+    private Bitmap decodeFile(File f)
+    {
+        try
+        {
+            // decode image size
             BitmapFactory.Options o = new BitmapFactory.Options();
             o.inJustDecodeBounds = true;
             BitmapFactory.decodeStream(new FileInputStream(f), null, o);
 
-            //Find the correct scale value. It should be the power of 2.
+            // Find the correct scale value. It should be the power of 2.
             final int REQUIRED_SIZE = 80;
             int width_tmp = o.outWidth, height_tmp = o.outHeight;
             int scale = 1;
-            while (true) {
-                if (width_tmp / 2 < REQUIRED_SIZE || height_tmp / 2 < REQUIRED_SIZE)
+            while (true)
+            {
+                if (width_tmp / 2 < REQUIRED_SIZE
+                        || height_tmp / 2 < REQUIRED_SIZE)
                     break;
                 width_tmp /= 2;
                 height_tmp /= 2;
                 scale *= 2;
             }
 
-            //decode with inSampleSize
+            // decode with inSampleSize
             BitmapFactory.Options o2 = new BitmapFactory.Options();
             o2.inSampleSize = scale;
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e)
+        {
         }
         return null;
     }
 
-
-    private class PhotoToLoad {
+    private class PhotoToLoad
+    {
         public String url;
         public ImageView imageView;
 
-        public PhotoToLoad(String u, ImageView i) {
+        public PhotoToLoad(String u, ImageView i)
+        {
             url = u;
             imageView = i;
         }
     }
 
-    class PhotosLoader implements Runnable {
+    class PhotosLoader implements Runnable
+    {
         PhotoToLoad photoToLoad;
 
-        PhotosLoader(PhotoToLoad photoToLoad) {
+        PhotosLoader(PhotoToLoad photoToLoad)
+        {
             this.photoToLoad = photoToLoad;
         }
 
-        public void run() {
+        public void run()
+        {
             if (imageViewReused(photoToLoad))
                 return;
             Bitmap bmp = getBitmap(photoToLoad.url);
@@ -175,44 +190,51 @@ public class ImageLoader {
         }
     }
 
-    boolean imageViewReused(PhotoToLoad photoToLoad) {
+    boolean imageViewReused(PhotoToLoad photoToLoad)
+    {
         String tag = imageViews.get(photoToLoad.imageView);
         if (tag == null || !tag.equals(photoToLoad.url))
             return true;
         return false;
     }
 
-    //Used to display bitmap in the UI thread
-    class BitmapDisplayer implements Runnable {
+    // Used to display bitmap in the UI thread
+    class BitmapDisplayer implements Runnable
+    {
         Bitmap bitmap;
         PhotoToLoad photoToLoad;
 
-        public BitmapDisplayer(Bitmap b, PhotoToLoad p) {
+        public BitmapDisplayer(Bitmap b, PhotoToLoad p)
+        {
             bitmap = b;
             photoToLoad = p;
         }
 
-        public void run() {
+        public void run()
+        {
             if (imageViewReused(photoToLoad))
                 return;
             if (bitmap != null)
                 photoToLoad.imageView.setImageBitmap(bitmap);
             // else
-            //TODO: Emplty Slot	
+            // TODO: Emplty Slot
             // photoToLoad.imageView.setImageResource(R.drawable.ic_image_slot_empty);
         }
     }
 
-    public void clearMemoryCache() {
+    public void clearMemoryCache()
+    {
         memoryCache.clear();
         Runtime.getRuntime().gc();
     }
 
-    public void clearFileCache() {
+    public void clearFileCache()
+    {
         fileCache.clear();
     }
 
-    public void clearCache() {
+    public void clearCache()
+    {
         memoryCache.clear();
         fileCache.clear();
     }

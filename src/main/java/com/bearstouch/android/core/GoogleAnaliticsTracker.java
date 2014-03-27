@@ -19,53 +19,58 @@
 
 package com.bearstouch.android.core;
 
+import java.util.HashMap;
+
 import android.content.Context;
+
 import com.google.analytics.tracking.android.GAServiceManager;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
 
 public class GoogleAnaliticsTracker
 {
+    Context mContext;
+    Tracker mTracker;
+    private static HashMap<String, Tracker> mTrackers=new HashMap<String, Tracker>();
 
-    Context context;
-    GoogleAnalytics mGInstance;
-    private Tracker mGTracker;
-
-    public GoogleAnaliticsTracker(Context context)
+    public GoogleAnaliticsTracker(Context context,String trackerName)
     {
-        this.context = context;
-        // Get singleton.
-        mGInstance = GoogleAnalytics.getInstance(context);
-        // Get default tracker.
-        mGTracker = mGInstance.getDefaultTracker();
+        mContext = context;
+        if( mTrackers.containsKey(trackerName) ){
+            mTracker=GoogleAnalytics.getInstance(context).getTracker(trackerName);
+            mTrackers.put(trackerName,mTracker);
+        }else{
+            mTrackers.get(trackerName);
+        }
+        // Get singleton.      
         GAServiceManager.getInstance().setDispatchPeriod(30);
     }
 
     public void trackView(String name)
     {
-        mGTracker.sendView(name);
+        mTracker.sendView(name);
     }
 
     public void trackEvent(String category, String action, String label,
             long value)
     {
-        mGTracker.sendEvent(category, action, label, value);
+        mTracker.sendEvent(category, action, label, value);
     }
 
     public void trackExeception(String description, Exception e)
     {
-        mGTracker.sendException(description, e, true);
+        mTracker.sendException(description, e, true);
     }
 
     public void trackSocial(String network, String action, String target)
     {
-        mGTracker.sendSocial(network, action, target);
+        mTracker.sendSocial(network, action, target);
     }
 
     public void trackTiming(String category, long interval, String name,
             String label)
     {
-        mGTracker.sendTiming(category, interval, name, label);
+        mTracker.sendTiming(category, interval, name, label);
     }
 
     public void disptach()

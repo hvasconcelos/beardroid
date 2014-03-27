@@ -23,5 +23,5 @@
    <declare-styleable name="WebLinkView" >
 		<attr name="link" format="string"/>
 		<attr name="name" format="string"/>		
-</declare-styleable> 
+    </declare-styleable> 
 </resources>

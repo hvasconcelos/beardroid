@@ -26,13 +26,10 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.bearstouch.android.core.Logging;
+import com.bearstouch.android.core.Logger;
 
 import java.io.*;
 import java.util.Arrays;
-
-import com.google.inject.Inject;
-import com.google.inject.name.Named;
 
 public class AssetDBHelper extends SQLiteOpenHelper
 {
@@ -43,13 +40,16 @@ public class AssetDBHelper extends SQLiteOpenHelper
     private String mDatabaseName;
     private int mDatabaseVersion;
     private AssetManager mAssetManager;
-    private Logging mLog;
+    private Logger mLog;
     private SQLiteDatabase mDatabase = null;
     private String mPackageName;
     private String mDBPath;
 
-    public AssetDBHelper(String package_name, String database_name,
-            int database_version, Context context, Logging log)
+    public AssetDBHelper(   String package_name, 
+                            String database_name,
+                            int database_version, 
+                            Context context, 
+                            Logger log)
     {
         super(context, database_name, null, database_version);
 
@@ -59,7 +59,7 @@ public class AssetDBHelper extends SQLiteOpenHelper
         mLog = log;
         mAssetManager = mContext.getAssets();
 
-        mLog.info(mContext, " Database helper for Database Name="
+        mLog.info(" Database helper for Database Name="
                 + mDatabaseName + " and version " + mDatabaseVersion);
 
         mPackageName = package_name;
@@ -70,7 +70,7 @@ public class AssetDBHelper extends SQLiteOpenHelper
             createDataBase();
         } catch (IOException e)
         {
-            mLog.error(mContext, " Failed Creating Database to " + mDBPath
+            mLog.error(" Failed Creating Database to " + mDBPath
                     + mDBPath);
             e.printStackTrace();
         }
@@ -111,8 +111,7 @@ public class AssetDBHelper extends SQLiteOpenHelper
                     SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         } catch (SQLiteException mSQLiteException)
         {
-            mLog.warning(mContext,
-                    "DatabaseNotFound " + mSQLiteException.toString());
+            mLog.warning("DatabaseNotFound " + mSQLiteException.toString());
         }
 
         if (mCheckDataBase != null)
@@ -125,7 +124,7 @@ public class AssetDBHelper extends SQLiteOpenHelper
     private void copyDataBase() throws IOException
     {
 
-        mLog.info(mContext, " Copying Database [" + mDatabaseName + "] to ["
+        mLog.info(" Copying Database [" + mDatabaseName + "] to ["
                 + mDBPath + mDBPath + "]");
         InputStream mInput = mContext.getAssets().open(mDatabaseName);
         String outFileName = mDBPath + mDatabaseName;

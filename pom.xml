@@ -82,32 +82,6 @@
                 </configuration>
                 <extensions>true</extensions>
             </plugin>
-            <plugin>
-                <groupId>com.google.code.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-                <configuration>
-                    <header>${basedir}/LICENSE_HEADER</header>
-                    <excludes>
-                        <exclude>target/**</exclude>
-                        <exclude>m2-target/**</exclude>
-                        <exclude>**/*.properties</exclude>
-                    </excludes>
-                    <properties>
-                        <name>${project.name}</name>
-                        <year>${project.inceptionYear}</year>
-                        <holder>${project.holder}</holder>
-                        <contact>${project.contact}</contact>
-                    </properties>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>

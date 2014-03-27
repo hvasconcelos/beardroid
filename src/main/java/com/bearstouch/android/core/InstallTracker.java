@@ -24,7 +24,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.DisplayMetrics;
+
 import org.apache.commons.codec.digest.DigestUtils;
+
 import java.util.UUID;
 
 public class InstallTracker
@@ -44,7 +46,7 @@ public class InstallTracker
     public static final String INSTALL_TRACK_EVENT_TAG = "Install Event";
 
     private Context mContext;
-    private Logging mLogging;
+    private Logger mLg;
     private GoogleAnaliticsTracker mGTracker;
     boolean mIsFirstTimeRunnig;
     private String mUniqueID = null;
@@ -52,11 +54,12 @@ public class InstallTracker
     private long mInstallTimeStamp = 0;
     private boolean mIsAValidInstall = false;
 
-    public InstallTracker(Context context, Logging logging,
-            GoogleAnaliticsTracker gTracker)
+    public InstallTracker(  Context context,   
+                            Logger log,
+                            GoogleAnaliticsTracker gTracker )
     {
         mContext = context;
-        mLogging = logging;
+        mLg = log;
         mGTracker = gTracker;
         mUniqueID = getIDFromFile(context);
     }
@@ -65,13 +68,12 @@ public class InstallTracker
     {
         SharedPreferences mSettings = null;
         mSettings = getPreferenceFile();
-        mLogging.info(ctx, "Verifying Install Info");
+        mLg.info("Verifying Install Info");
         mUniqueID = mSettings.getString(UNIQUE_KEYID, "");
         if (mUniqueID.length() == 0)
         {
             // Application First run
-            mLogging.info(ctx,
-                    "First Time Running - Generating Unique Install ID");
+            mLg.info("First Time Running - Generating Unique Install ID");
             mIsFirstTimeRunnig = true;
             mIsAValidInstall = true;
             mUniqueID = UUID.randomUUID().toString();
@@ -80,20 +82,20 @@ public class InstallTracker
                     + Long.toString(mInstallTimeStamp));
             saveToPreferencesFile(ctx, mSettings, mUniqueID, mInstallTimeStamp,
                     mTimeStampHash);
-            mLogging.info(ctx, "Install Info Saved with Success");
+            mLg.info("Install Info Saved with Success");
             return mUniqueID;
         } else
         {
-            mLogging.info(ctx, "Not First Time Running - Validating Install");
+            mLg.info("Not First Time Running - Validating Install");
             mTimeStampHash = mSettings.getString(TIMESTAMP_HASH_KEY, "");
             mInstallTimeStamp = mSettings.getLong(INSTALL_TIMESTAMP_KEY, 0);
             mIsAValidInstall = verifyInstallID();
             if (!mIsAValidInstall)
             {
-                mLogging.error(ctx, "Invalid Install = " + mUniqueID);
+                mLg.error("Invalid Install = " + mUniqueID);
             } else
             {
-                mLogging.info(ctx, "Unique ID Loaded = " + mUniqueID);
+                mLg.info("Unique ID Loaded = " + mUniqueID);
             }
             return mUniqueID;
         }
@@ -105,11 +107,11 @@ public class InstallTracker
     {
 
         SharedPreferences.Editor editor = Settings.edit();
-        mLogging.info(ctx, "Saving Unique Install ID = " + deviceId);
+        mLg.info("Saving Unique Install ID = " + deviceId);
         editor.putString(UNIQUE_KEYID, deviceId);
-        mLogging.info(ctx, "Saving Timestamp = " + install_ts);
+        mLg.info("Saving Timestamp = " + install_ts);
         editor.putLong(INSTALL_TIMESTAMP_KEY, install_ts);
-        mLogging.info(ctx, "Saving UUID hash = " + install_hash);
+        mLg.info("Saving UUID hash = " + install_hash);
         editor.putString(TIMESTAMP_HASH_KEY, install_hash);
         editor.commit();
     }

@@ -35,13 +35,13 @@ Add the library to your maven dependencies list
     </dependency>  
 
 # Activity Injection
+```
+@Layout(R.layout.home_activity)
+public class Home extends Activity {
 
-    @Layout(R.layout.home_activity)
-    public class Home extends Activity {
-        
-        @StringRes(R.string.application_name)
+	@StringRes(R.string.application_name)
 	public String mAppName;
-    
+	
 	@StringRes(R.string.app_version_name)
 	public String mAppVersion;
 	
@@ -60,15 +60,15 @@ Add the library to your maven dependencies list
 	}
 	
 	@Override
-        protected void onCreate(Bundle savedInstanceState)
-        {	  
-             super.onCreate(savedInstanceState);
+	protected void onCreate(Bundle savedInstanceState)
+	{	  
+	     super.onCreate(savedInstanceState);
 	     Injector.injectActiviy(this);
-             mGA.trackView("home");
-             mLog.info("Atcitvity Called");
-        }
-    }  
-
+	     mGA.trackView("home");
+	     mLog.info("Atcitvity Called");
+	}
+}  
+```
 # To use GoogleAnalyticsTracker
 
 Create the file res/values/analytics.xml with this content

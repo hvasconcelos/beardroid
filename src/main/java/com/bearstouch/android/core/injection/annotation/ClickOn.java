@@ -6,9 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface Log
+@Target(ElementType.METHOD)
+public @interface ClickOn
 {
-    int level();
-    String logTag();
+    int value();    
 }

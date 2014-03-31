@@ -64,8 +64,9 @@ public class BearDBHelper extends SQLiteOpenHelper
         upgradeToVersion(database, mDatabaseVersion, 1);
     }
 
-    private void upgradeToVersion(SQLiteDatabase db, int newVersion,
-            int oldVersion)
+    private void upgradeToVersion(  SQLiteDatabase db, 
+                                    int newVersion,
+                                    int oldVersion)
     {
         if (newVersion > oldVersion)
         {

@@ -30,17 +30,17 @@ import com.google.analytics.tracking.android.Tracker;
 public class GoogleAnaliticsTracker
 {
     Context mContext;
-    Tracker mTracker;
+    Tracker mTracker=null;
     private static HashMap<String, Tracker> mTrackers=new HashMap<String, Tracker>();
 
     public GoogleAnaliticsTracker(Context context,String trackerName)
     {
         mContext = context;
-        if( mTrackers.containsKey(trackerName) ){
+        if( !mTrackers.containsKey(trackerName) ){
             mTracker=GoogleAnalytics.getInstance(context).getTracker(trackerName);
             mTrackers.put(trackerName,mTracker);
         }else{
-            mTrackers.get(trackerName);
+            mTracker=mTrackers.get(trackerName);
         }
         // Get singleton.      
         GAServiceManager.getInstance().setDispatchPeriod(30);

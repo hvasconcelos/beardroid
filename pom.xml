@@ -78,7 +78,7 @@
                 <configuration>
                     <source>${java.source.level}</source>
                     <target>${java.target.level}</target>
-                    <sdk><platform>17</platform></sdk>
+                    <sdk><platform>15</platform></sdk>
                 </configuration>
                 <extensions>true</extensions>
             </plugin>

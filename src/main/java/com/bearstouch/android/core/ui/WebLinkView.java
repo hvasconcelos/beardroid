@@ -25,7 +25,7 @@ import android.content.res.TypedArray;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.View;
-import com.bearstouch.android.core.R;
+import com.bearstouch.beardroid.R;
 
 public class WebLinkView extends View
 {
@@ -72,7 +72,7 @@ public class WebLinkView extends View
     private void init(AttributeSet attrs)
     {
         TypedArray a = getContext().obtainStyledAttributes(attrs,
-                com.bearstouch.android.core.R.styleable.WebLinkView);
+                com.bearstouch.beardroid.R.styleable.WebLinkView);
         String url = a.getString(R.styleable.WebLinkView_link);
 
         this.http_url = url;

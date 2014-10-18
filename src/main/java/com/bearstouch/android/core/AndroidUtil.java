@@ -39,6 +39,8 @@ import java.io.FileOutputStream;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
+import com.bearstouch.beardroid.R;
+
 
 public class AndroidUtil
 {

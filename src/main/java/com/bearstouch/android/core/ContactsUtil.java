@@ -123,70 +123,16 @@ public class ContactsUtil
      * @param ctx
      * @return
      */
-    public static MatrixCursor getOrderedContactsWithPhoneList(Context ctx)
-    {
-        MatrixCursor cursortoreturn;
-        String[] columnnames = new String[5];
-
-        columnnames[0] = "_id";
-        columnnames[1] = "database_id";
-        columnnames[2] = "display_name";
-        columnnames[3] = "phone_number";
-        columnnames[4] = "phone_type";
-        cursortoreturn = new MatrixCursor(columnnames);
-
-        ContentResolver cr = ctx.getContentResolver();
-        String[] columns = new String[]
-        { BaseColumns._ID, ContactsContract.Contacts.DISPLAY_NAME,
-                ContactsContract.Contacts.HAS_PHONE_NUMBER };
-        Cursor people = cr.query(ContactsContract.Contacts.CONTENT_URI,
-                columns, ContactsContract.Contacts.HAS_PHONE_NUMBER + ">=1",
-                null, ContactsContract.Contacts.DISPLAY_NAME
-                        + " COLLATE NOCASE ASC");
-
-        people.moveToFirst();
-
-        while (people.moveToNext())
-        {
-
-            String contactId = people.getString(people
-                    .getColumnIndex(ContactsContract.Contacts._ID));
-            String diplayName = people.getString(people
-                    .getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-
-            Cursor phoneCursor = ctx.getContentResolver().query(
-                    Data.CONTENT_URI,
-                    new String[]
-                    { Data._ID, Phone.NUMBER, Phone.TYPE, Phone.LABEL },
-                    Data.CONTACT_ID + "=?" + " AND " + Data.MIMETYPE + "='"
-                            + Phone.CONTENT_ITEM_TYPE + "'", new String[]
-                    { String.valueOf(contactId) }, null);
-
-            String Phonenumber = "";
-            while (phoneCursor.moveToNext())
-            {
-                String number = phoneCursor.getString(phoneCursor
-                        .getColumnIndex(Phone.NUMBER));
-                long dataid = phoneCursor.getLong(phoneCursor
-                        .getColumnIndex(Data._ID));
-                String type = Integer.toString(phoneCursor.getInt(phoneCursor
-                        .getColumnIndex(Phone.TYPE)));
-                if (Phonenumber.compareTo(number) != 0)
-                {
-                    cursortoreturn.addRow(new String[]
-                    { Long.toString(dataid), contactId, diplayName, number,
-                            type });
-                    Phonenumber = number;
-                }
-
-            }
-            phoneCursor.close();
-
-        }
-        people.close();
-
-        return cursortoreturn;
-
+    public static Cursor getContactPhoneList(Context ctx){
+        return ctx.getContentResolver()
+                .query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                        new String[] {  ContactsContract.CommonDataKinds.Phone._ID,
+                                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                                ContactsContract.CommonDataKinds.Phone.TYPE,
+                                ContactsContract.CommonDataKinds.Phone.NUMBER},
+                        null,
+                        null,
+                        ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
     }
 
 }

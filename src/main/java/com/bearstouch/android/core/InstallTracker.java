@@ -25,13 +25,14 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.DisplayMetrics;
 
+import com.google.analytics.tracking.android.Tracker;
+
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.UUID;
 
 public class InstallTracker
 {
-
     private static final String UNIQUE_KEYID = "PID";
     private static final String INSTALL_TIMESTAMP_KEY = "ITSK";
     private static final String TIMESTAMP_HASH_KEY = "UIDHK";
@@ -46,21 +47,18 @@ public class InstallTracker
     public static final String INSTALL_TRACK_EVENT_TAG = "Install Event";
 
     private Context mContext;
-    private Logger mLg;
-    private GoogleAnaliticsTracker mGTracker;
     boolean mIsFirstTimeRunnig;
     private String mUniqueID = null;
     private String mTimeStampHash = null;
     private long mInstallTimeStamp = 0;
     private boolean mIsAValidInstall = false;
 
-    public InstallTracker(  Context context,   
-                            Logger log,
-                            GoogleAnaliticsTracker gTracker )
+    private Tracker mTracker;
+
+    public InstallTracker(  Context context)
     {
         mContext = context;
-        mLg = log;
-        mGTracker = gTracker;
+        mTracker=GATracker.getTracker(context,GATracker.APP_TRACKER);
         mUniqueID = getIDFromFile(context);
     }
 
@@ -68,12 +66,12 @@ public class InstallTracker
     {
         SharedPreferences mSettings = null;
         mSettings = getPreferenceFile();
-        mLg.info("Verifying Install Info");
+        Logger.info(ctx,"Verifying Install Info");
         mUniqueID = mSettings.getString(UNIQUE_KEYID, "");
         if (mUniqueID.length() == 0)
         {
             // Application First run
-            mLg.info("First Time Running - Generating Unique Install ID");
+            Logger.info(ctx,"First Time Running - Generating Unique Install ID");
             mIsFirstTimeRunnig = true;
             mIsAValidInstall = true;
             mUniqueID = UUID.randomUUID().toString();
@@ -82,20 +80,20 @@ public class InstallTracker
                     + Long.toString(mInstallTimeStamp));
             saveToPreferencesFile(ctx, mSettings, mUniqueID, mInstallTimeStamp,
                     mTimeStampHash);
-            mLg.info("Install Info Saved with Success");
+            Logger.info(ctx,"Install Info Saved with Success");
             return mUniqueID;
         } else
         {
-            mLg.info("Not First Time Running - Validating Install");
+            Logger.info(ctx,"Not First Time Running - Validating Install");
             mTimeStampHash = mSettings.getString(TIMESTAMP_HASH_KEY, "");
             mInstallTimeStamp = mSettings.getLong(INSTALL_TIMESTAMP_KEY, 0);
             mIsAValidInstall = verifyInstallID();
             if (!mIsAValidInstall)
             {
-                mLg.error("Invalid Install = " + mUniqueID);
+                Logger.error(ctx,"Invalid Install = " + mUniqueID);
             } else
             {
-                mLg.info("Unique ID Loaded = " + mUniqueID);
+                Logger.info(ctx,"Unique ID Loaded = " + mUniqueID);
             }
             return mUniqueID;
         }
@@ -107,11 +105,11 @@ public class InstallTracker
     {
 
         SharedPreferences.Editor editor = Settings.edit();
-        mLg.info("Saving Unique Install ID = " + deviceId);
+        Logger.info(ctx,"Saving Unique Install ID = " + deviceId);
         editor.putString(UNIQUE_KEYID, deviceId);
-        mLg.info("Saving Timestamp = " + install_ts);
+        Logger.info(ctx,"Saving Timestamp = " + install_ts);
         editor.putLong(INSTALL_TIMESTAMP_KEY, install_ts);
-        mLg.info("Saving UUID hash = " + install_hash);
+        Logger.info(ctx,"Saving UUID hash = " + install_hash);
         editor.putString(TIMESTAMP_HASH_KEY, install_hash);
         editor.commit();
     }
@@ -160,22 +158,16 @@ public class InstallTracker
             String app_version_name)
     {
 
-        mGTracker
-                .trackEvent(INSTALL_TRACK_EVENT_TAG, APP_NAME_VAR, app_name, 1);
-        mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, APP_VERSION_VAR,
-                app_version_name, 1);
-        mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, SDK_VERSION_VAR,
-                Integer.toString(Build.VERSION.SDK_INT), 1);
-        mGTracker
-                .trackEvent(INSTALL_TRACK_EVENT_TAG, PHONE_VAR,
-                        Build.MANUFACTURER + " " + Build.PRODUCT + " "
-                                + Build.MODEL, 1);
-        mGTracker
-                .trackEvent(INSTALL_TRACK_EVENT_TAG, CPU_VAR, Build.CPU_ABI, 1);
+        mTracker.sendEvent(INSTALL_TRACK_EVENT_TAG, APP_NAME_VAR, app_name, 1L);
+        mTracker.sendEvent(INSTALL_TRACK_EVENT_TAG, APP_VERSION_VAR,app_version_name, 1L);
+        mTracker.sendEvent(INSTALL_TRACK_EVENT_TAG, SDK_VERSION_VAR,Integer.toString(Build.VERSION.SDK_INT), 1L);
+        mTracker.sendEvent(INSTALL_TRACK_EVENT_TAG, PHONE_VAR,
+                            Build.MANUFACTURER + " " + Build.PRODUCT + " "
+                                + Build.MODEL, 1L);
+        mTracker.sendEvent(INSTALL_TRACK_EVENT_TAG, CPU_VAR, Build.CPU_ABI, 1L);
         String installationSource = mContext.getPackageManager()
                 .getInstallerPackageName(mContext.getPackageName());
-        mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, INSTALLER_VAR,
-                installationSource, 1);
+        mTracker.sendEvent(INSTALL_TRACK_EVENT_TAG, INSTALLER_VAR,installationSource, 1L);
 
         // Ecra
         DisplayMetrics displayMetrics = AndroidUtil.getDisplayMetrics(activity);
@@ -184,9 +176,8 @@ public class InstallTracker
             String Resolution = displayMetrics.widthPixels + "x"
                     + displayMetrics.heightPixels;
             String dpis = displayMetrics.xdpi + "x" + displayMetrics.ydpi;
-            mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, "RESOLUTION",
-                    Resolution, 1);
-            mGTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, "DPI", dpis, 1);
+            mTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, "RESOLUTION",Resolution, 1L);
+            mTracker.trackEvent(INSTALL_TRACK_EVENT_TAG, "DPI", dpis, 1L);
         }
     }
 

@@ -53,7 +53,7 @@ public class BearDBHelper extends SQLiteOpenHelper
         mContext = context;
         mAssetManager = mContext.getAssets();
         mLog = log;
-        mLog.info(" Database helper for Database Name="
+        Logger.info(mContext," Database helper for Database Name="
                 + mDatabaseName + " and version " + mDatabaseVersion);
         mDatabase = getWritableDatabase();
     }
@@ -79,7 +79,7 @@ public class BearDBHelper extends SQLiteOpenHelper
 
     private void downgrade(SQLiteDatabase db, int newVersion, int oldVersion)
     {
-        mLog.info("Database Downgrading from version[" + oldVersion
+        Logger.info(mContext,"Database Downgrading from version[" + oldVersion
                 + "] to version [" + newVersion + "]");
         for (int i = oldVersion; i > newVersion; i--)
         {
@@ -87,12 +87,12 @@ public class BearDBHelper extends SQLiteOpenHelper
             try
             {
                 db.beginTransaction();
-                mLog.info("Reading SQL file "
+                Logger.info(mContext,"Reading SQL file "
                         + "db_migrations/downgrade_" + i + ".sql");
                 InputStream is = mAssetManager.open("db_migrations/downgrade_"
                         + i + ".sql");
                 String script = FileUtil.readFileContentToString(is);
-                mLog.info("Executing = " + script);
+                Logger.info(mContext,"Executing = " + script);
                 db.execSQL(script);
                 db.endTransaction();
             } catch (IOException e)
@@ -108,7 +108,7 @@ public class BearDBHelper extends SQLiteOpenHelper
     private void upgrade(SQLiteDatabase db, int newVersion, int oldVersion)
     {
 
-        mLog.info("Database Upgrading from version[" + oldVersion
+        Logger.info(mContext,"Database Upgrading from version[" + oldVersion
                 + "] to version [" + newVersion + "]");
         for (int i = oldVersion; i <= newVersion; i++)
         {
@@ -116,12 +116,12 @@ public class BearDBHelper extends SQLiteOpenHelper
             try
             {
                 db.beginTransaction();
-                mLog.info("Reading SQL file "
+                Logger.info(mContext,"Reading SQL file "
                         + "db_migrations/upgrade_" + i + ".sql");
                 InputStream is = mAssetManager.open("db_migrations/upgrade_"
                         + i + ".sql");
                 String script = FileUtil.readFileContentToString(is);
-                mLog.info("Executing = " + script);
+                Logger.info(mContext,"Executing = " + script);
                 db.execSQL(script);
                 db.endTransaction();
 
@@ -154,7 +154,7 @@ public class BearDBHelper extends SQLiteOpenHelper
             String orderBy, String limit)
     {
 
-        mLog.info("SELECT " + columns.toString() + " FROM " + table
+        Logger.info(mContext,"SELECT " + columns.toString() + " FROM " + table
                 + " WHERE " + selection);
         return mDatabase.query(table, columns, selection, selectionArgs,
                 groupBy, having, orderBy, limit);
@@ -164,7 +164,7 @@ public class BearDBHelper extends SQLiteOpenHelper
             String[] selectionArgs, String groupBy, String having,
             String orderBy)
     {
-        mLog.info("SELECT " + columns.toString() + " FROM " + table
+        Logger.info(mContext,"SELECT " + columns.toString() + " FROM " + table
                 + " WHERE " + selection);
         return mDatabase.query(table, columns, selection, selectionArgs,
                 groupBy, having, orderBy);

@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import com.bearstouch.android.core.GoogleAnaliticsTracker;
+import com.bearstouch.android.core.GATracker;
 import com.bearstouch.android.core.Logger;
 import com.bearstouch.android.core.injection.annotation.ClickOn;
 import com.bearstouch.android.core.injection.annotation.GoogleAnalytics;
@@ -125,7 +125,7 @@ public class Injector
     {
         Log vAn = (Log) annotation;
         field.set(act,new Logger(act.getApplicationContext(), vAn
-                        .logTag(), vAn.level()));
+                        .logTag(), Logger.LogLevel.INFO));
     }
 
     private static void processViewIdAnn(Activity act, Field field,
@@ -147,6 +147,6 @@ public class Injector
             Annotation annotation) throws IllegalAccessException
     {
         GoogleAnalytics gaAn = (GoogleAnalytics) annotation;
-        field.set(act,new GoogleAnaliticsTracker(act, gaAn.value()));
+        //field.set(act,new GATracker(act, gaAn.value()));
     }
 }

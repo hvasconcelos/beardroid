@@ -21,47 +21,127 @@ package com.bearstouch.android.core;
 
 import android.content.Context;
 import android.util.Log;
+import com.google.analytics.tracking.android.Tracker;
 
 public class Logger
 {
-    public static final int INFO = 1;
-    public static final int WARN = 2;
-    public static final int ERROR = 3;
+    // Global Logger
+    private static Logger gLogger = null;
+    // Logger Name
+    String      mTagName;                //application name
+    // Logger Context
+    Context     mCtx;                    //application context
+    // Is the instance Debuggablke
+    boolean     mIsDebuggable;           //if not a debu Version will debug
+    // Active Level
+    LogLevel    mLevel;
 
-    Context mCtx;
-    boolean mIsDebuggable;
-    String mLogTag;
-    int mLevel;
 
-    public Logger(Context context, String logTag, int level)
-    {
-        this.mIsDebuggable = AndroidUtil.isDebugVersion(context);
-        this.mLogTag = context.getApplicationInfo().name + " - " + logTag;
-        this.mLevel = level;
-        this.mCtx = context;
+    public enum LogLevel{
+        INFO,
+        WARN,
+        ERROR,
+        FATAL
     }
 
-    public void exception(String logMsg, Exception e)
-    {
-        if (mIsDebuggable)
-            Log.e(mLogTag, logMsg, e);
+    public Logger(Context ctx) {
+        init(ctx, ctx.getApplicationInfo().name, LogLevel.INFO);
     }
 
-    public void error(String logMsg)
-    {
-        if (mIsDebuggable)
-            Log.e(mLogTag, logMsg);
+    public Logger(Context ctx, String name, LogLevel level){
+        init(ctx, name, level);
     }
 
-    public void info(String logMsg)
-    {
-        if (mIsDebuggable && mLevel >= INFO)
-            Log.i(mLogTag, logMsg);
+    private void init(Context ctx, String name, LogLevel level) {
+        this.mCtx = ctx;
+        if (AndroidUtil.isDebugVersion(ctx)) {
+            mIsDebuggable = true;
+        } else {
+            mIsDebuggable = false;
+        }
+        mTagName = name;
+        mLevel=level;
     }
 
-    public void warning(String logMsg)
+    public static void error(Context ctx, String logMsg) {
+        initializeIfNeeded(ctx);
+        gLogger.error(logMsg);
+    }
+
+    public void error(String logMsg){
+        Log.d(mTagName, logMsg);
+    }
+
+
+    public static void error(Context ctx, String logMsg, Exception e) {
+        initializeIfNeeded(ctx);
+        gLogger.error(logMsg,e);
+    }
+
+    public void error(String logMsg, Exception e){
+        Log.d(mTagName, logMsg);
+    }
+
+    public static void info(Context ctx, String logMsg) {
+
+        initializeIfNeeded(ctx);
+        gLogger.info(logMsg);
+
+    }
+
+    public void info(String logMsg){
+        if (mIsDebuggable &&
+            mLevel.ordinal()>=LogLevel.INFO.ordinal()) {
+            Log.i(mTagName, logMsg);
+        }
+    }
+
+    protected static void initializeIfNeeded(Context ctx) {
+        if (gLogger == null) {
+            gLogger = new Logger(ctx);
+        }
+    }
+
+    public static boolean isDebuggable(Context ctx) {
+        initializeIfNeeded(ctx);
+        return gLogger.mIsDebuggable;
+
+    }
+
+    public static void logAndTrackException(Context ctx, String type,
+                                            String logMsg, Exception e)
     {
-        if (mIsDebuggable && mLevel >= WARN)
-            Log.w(mLogTag, logMsg);
+        initializeIfNeeded(ctx);
+        gLogger.error(type,logMsg,e);
+    }
+
+
+    public void error(String type,
+          String logMsg, Exception e)
+    {
+        Tracker tracker= GATracker.getTracker(mCtx, GATracker.APP_TRACKER);
+        if (tracker != null & !mIsDebuggable) {
+            tracker.sendException("SMS Scheduler",e,false);
+            tracker.sendEvent("SQLException", type, logMsg, 0L);
+        }
+        if (mIsDebuggable) {
+            Log.e(mTagName, logMsg, e);
+        }
+
+    }
+
+    public static void warning(Context ctx, String logMsg) {
+
+        initializeIfNeeded(ctx);
+        gLogger.warning(logMsg);
+
+    }
+
+    public void warning(String logMsg) {
+        if (    mIsDebuggable &&
+                mLevel.ordinal() >= LogLevel.WARN.ordinal() ) {
+            Log.w(mTagName, logMsg);
+        }
+
     }
 }

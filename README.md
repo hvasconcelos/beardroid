@@ -34,41 +34,6 @@ Add the library to your maven dependencies list
     <type>apklib</type>
     </dependency>  
 
-# Activity Injection
-```
-@Layout(R.layout.home_activity)
-public class Home extends Activity {
-
-	@StringRes(R.string.application_name)
-	public String mAppName;
-	
-	@StringRes(R.string.app_version_name)
-	public String mAppVersion;
-	
-	@GoogleAnalytics("Global")
-	public GoogleAnaliticsTracker mGA;
-	
-	@Log(level=Logger.INFO,logTag="Activity")
-	public Logger mLog;
-	   
-	@ViewId(R.id.rules_list) 
-	ListView mRulesList; 
-		
-	@ClickOn(R.id.vocabulario_ll)
-	public void onButtonClick(){
-	      //...
-	}
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{	  
-	     super.onCreate(savedInstanceState);
-	     Injector.injectActiviy(this);
-	     mGA.trackView("home");
-	     mLog.info("Atcitvity Called");
-	}
-}  
-```
 # To use GoogleAnalyticsTracker
 
 Create the file res/values/analytics.xml with this content
@@ -84,7 +49,7 @@ Create the file res/values/analytics.xml with this content
       <!--Enable automatic exception tracking-->
       <bool name="ga_reportUncaughtExceptions">true</bool>
      </resources>
-     
+
 ## About me
 
 Hélder Vasconcelos

@@ -1,13 +1,11 @@
 package com.bearstouch.beardroid.core.injection.annotation;
 
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.lang.annotation.ElementType;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface GoogleAnalytics
-{
-    String value();
+@Target(ElementType.TYPE)
+public @interface Singleton {
 }

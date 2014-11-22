@@ -1,4 +1,4 @@
-package com.bearstouch.beardroid.core.injection.app.activities;
+package com.bearstouch.beardroid.core.injection.app.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bearstouch.beardroid.core.injection.Injector;
+import com.bearstouch.beardroid.core.injection.app.activities.InjectView;
 
 /**
  * Created by heldervasc on 18/11/14.
  */
-public class InjectedFragment  extends Fragment implements InjectView {
+public class FragmentInj extends Fragment implements InjectView {
 
 
     @Override

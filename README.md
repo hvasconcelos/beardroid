@@ -19,7 +19,7 @@ Main Classes:
 Soon I will create a bunch of tutorials to use BearDroid in your applications.
 
 ## How to use it?
-First you need to install the library in your maven local repositoty
+First you need to install the library in your maven local repository
 
     git clone git@github.com:hvasconcelos/beardroid.git
     cd beardroid
